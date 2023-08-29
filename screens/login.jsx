@@ -25,7 +25,7 @@ function Login() {
                 <Text className='font-extrabold text-1xl text-yellow-500'>National Highways & Motorway Police</Text>
             </View>
             <View className='w-full  flex justify-center items-center h-fit bg-slate-600 py-10 '>
-                <Text className='text-white font-extrabold '>LOGIN HERE</Text>
+                <Text className='text-white font-extrabold  text-left'>LOGIN </Text>
                 <TextInput
                     placeholder='User Name'
                     value={user}
@@ -39,7 +39,7 @@ function Login() {
                     onChange={(e) => setPwd(e.target.value)}
                     className=' p-2 border border-white text-white m-3 rounded-md w-10/12' />
 
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}
+                <TouchableOpacity 
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
                     <Text className='text-blue-500 text-center font-bold'>Login</Text>
 
