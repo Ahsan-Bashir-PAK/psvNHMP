@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {
   SafeAreaView,
@@ -26,27 +26,21 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-import Login from './screens/login';
-import MyStack from './Navigations/navigation';
-import Main from './screens/main';
-import MyTabs from './Navigations/tabnavigation';
+
+// import Login from './screens/login';
+import MyTabs from '../Navigations/tabnavigation'
 
 
-function App(): JSX.Element {
+
+function Main(){
   
   return (
     
-    // <MyStack />
-    <Main />
-    
-
+    <MyTabs />
     
     
     
   );
 }
 
-export default App;
+export default Main;

@@ -39,7 +39,7 @@ function Login() {
                     onChange={(e) => setPwd(e.target.value)}
                     className=' p-2 border border-white text-white m-3 rounded-md w-10/12' />
 
-                <TouchableOpacity 
+                <TouchableOpacity onPress={()=>navigation.navigate('Home')}
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
                     <Text className='text-blue-500 text-center font-bold'>Login</Text>
 
