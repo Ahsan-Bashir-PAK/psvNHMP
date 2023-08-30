@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { Scroll } from 'lucide-react-native';
@@ -22,6 +22,7 @@ const licienceType = [
   {label: 'Other', value: 'Others'},
   
 ];
+ 
 
 const AddDriver = () => {
   //-------------------------------------------dob
@@ -40,13 +41,50 @@ const AddDriver = () => {
   //-------------------------------------------------------
   const [LcOpen, setLcOpen] = useState(false);
   const [currentProvince, setCurrentProvince] = useState(null);
+// Search CNIC
+const [searchcnic, setSearch] = useState('');
+const [dname, dName] = useState('');
+const [dfathername, dFName] = useState('');
+const [ddob, dDob] = useState('');
+const [daddress, dAddress] = useState('');
+const [dcnic, dCnic] = useState('');
+const [dcell, dCell] = useState('');
+const [ddisability, dDisability] = useState('');
+const [dcompnay, dCompany] = useState('');
+const [dlicense, dLicense] = useState('');
+const [dltype, dLtype] = useState('');
+const [dlauthority, dlAuthority] = useState('');
+const [dlissue, dlIssue] = useState('');
+const [dlexp, dlExp] = useState('');
 
+function clearall(){
+      
+    setSearch('')
+    dName('')
+    dFName('')
+    //dDob('')
+    dAddress('')
+    dCnic('')
+    dCell('')
+    dDisability('')
+    dCompany('')
+    dLicense('')
+    dLtype('')
+    dlAuthority('')
+    //dlIssue('')
+   // dlExp('')
+
+    
+}
   return (
+    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
     <View className="bg-slate-100  flex flex-col h-screen ">
- 
+        
       <View className="bg-slate-100 flex flex-row justify-center items-center rounded-lg shadow-lg shadow-black p-2 m-2">
        
         <TextInput 
+        value={searchcnic}
+        onChange={(e) => setSearch(e.target.value)}
         maxLength={13}
         keyboardType='numeric'
         placeholderTextColor={'grey'} 
@@ -56,15 +94,20 @@ const AddDriver = () => {
           <Text className="text-center text-white font-extrabold">Search</Text>
         </TouchableOpacity>
       </View>
-      {/* </View> */}
+      {/* </View>  Driver Name*/}
       <View className="bg-slate-100 flex flex-col justify-center items-center rounded-lg shadow-lg shadow-black p-2 m-2">
         <TextInput
+            value={dname}
+            onChange={(e) => dName(e.target.value)}
             keyboardType='email-address'
             placeholderTextColor={'grey'} 
           placeholder="Enter Driver Name"
           className={styles.inputViolet}
         />
+        {/* Driver FAther Name */}
         <TextInput
+          value={dfathername}
+          onChange={(e) =>dFName(e.target.value)}
           placeholderTextColor={'grey'}
           placeholder="Enter Father Name"
           className={styles.inputViolet}
@@ -97,28 +140,50 @@ const AddDriver = () => {
         </View>
 {/* ====================================================== */}
 
-        <TextInput placeholderTextColor={'grey'} placeholder="Enter Address" className={styles.inputViolet} />
-        <TextInput placeholderTextColor={'grey'} keyboardType='numeric'placeholder="Enter CNIC" className={styles.inputViolet} />
+        <TextInput 
+        value={daddress}
+        onChange={(e) => dAddress(e.target.value)}
+        placeholderTextColor={'grey'} placeholder="Enter Address" className={styles.inputViolet} />
+       {/* Enter CNIC */}
+        <TextInput 
+        value={dcnic}
+        onChange={(e) => dCnic(e.target.value)}
+        placeholderTextColor={'grey'} keyboardType='numeric'placeholder="Enter CNIC" className={styles.inputViolet} />
+        {/* Cell No */}
         <View className='flex flex-row m-1'>
-        <TextInput placeholderTextColor={'grey'} keyboardType='numeric' placeholder="Cell No." className={styles.inputVioletSmall} />
-        <TextInput placeholderTextColor={'grey'} placeholder="Disability( if any )" className={styles.inputVioletSmall}/>
+        <TextInput 
+        value={dcell}
+        onChange={(e) => dCell(e.target.value)}
+        placeholderTextColor={'grey'} keyboardType='numeric' placeholder="Cell No." className={styles.inputVioletSmall} />
+        {/* Disability */}
+        <TextInput 
+        value={ddisability}
+        onChange={(e) => dDisability(e.target.value)}
+        placeholderTextColor={'grey'} placeholder="Disability( if any )" className={styles.inputVioletSmall}/>
         </View>
+        {/*Company Name  */}
         <View className='flex flex-row m-1'>
-        <TextInput placeholderTextColor={'grey'} placeholder="Company Name" className={styles.inputVioletSmall} />
-       
-        <TextInput placeholderTextColor={'grey'} placeholder="License No." className={styles.inputVioletSmall} />
+        <TextInput 
+        value={dcompnay}
+        onChange={(e) => dCompany(e.target.value)}
+        placeholderTextColor={'grey'} placeholder="Company Name" className={styles.inputVioletSmall} />
+       {/* License No */}
+        <TextInput 
+        value={dlicense}
+        onChange={(e) => dLicense(e.target.value)}
+        placeholderTextColor={'grey'} placeholder="License No." className={styles.inputVioletSmall} />
         </View>
+        {/* License Type */}
         <View className='flex flex-row gap-1 z-50'>
 <View className='w-2/4 z-40'>
 <DropDownPicker
-          listMode={'SCROLLVIEW'}
+          
           items={licienceType}
           open={LcOpen}
           setOpen={() => setLcOpen(!LcOpen)}
           value={currentLiceince}
           setValue={val => setCurrentLiceince(val)}
           placeholder="License Type"
-          autoScroll={true}
           placeholderStyle={{color: 'darkgray'}}
           style={{
             backgroundColor: 'white',
@@ -131,7 +196,7 @@ const AddDriver = () => {
         </View>
         {/*   */}
        {/* -------------------------------------------------issue date */}
-         <View className='w-2/4 '>
+         <View className=' border w-2/4 '>
         {/* Provinces list */}
     
         <DropDownPicker
@@ -146,11 +211,7 @@ const AddDriver = () => {
           dropDownContainerStyle={{
             backgroundColor: "white"
           }}
-        listItemContainerStyle={{
-            height:28
-                
-        }}
-       
+   
           style={{
             backgroundColor: 'white',
             borderColor: 'blue',
@@ -164,7 +225,8 @@ const AddDriver = () => {
         </View>
         
         </View>
-         <View className="flex flex-row m-1">
+        {/* issue Date */}
+         <View className="  flex flex-row m-1">
           <Text className="p-2 font-extrabold text-black">
             Issue Date
           </Text>
@@ -173,9 +235,9 @@ const AddDriver = () => {
             mode="date"
             open={openIssue}
             date={issue}
-            onConfirm={value => {
+            onConfirm={val => {
               setOpenIssue(false);
-              setIssue(value);
+              setIssue(val);
             }}
             onCancel={() => {
               setOpenIssue(false);
@@ -210,17 +272,17 @@ const AddDriver = () => {
           <Text className="rounded-md border w-8/12   text-center text-black font-bold p-2">
             {expiry.toLocaleDateString()}
           </Text>
-          <TouchableOpacity onPress={() => setOpenIssue(true)}>
+          <TouchableOpacity onPress={() => setOpenExpiry(true)}>
             <Text className="p-2 text-md bg-[#29378a] rounded-md ml-1">📅</Text>
           </TouchableOpacity>
         </View>
       <View className ='flex flex-row mt-3'>
-      <TouchableOpacity className='bg-[#29378a] px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>RESET</Text></TouchableOpacity>
-      <TouchableOpacity className='bg-green-500 px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>SAVE</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>clearall()} className='bg-[#fc4343] px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>RESET</Text></TouchableOpacity>
+      <TouchableOpacity  className='bg-[#29378a] px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>SAVE</Text></TouchableOpacity>
       </View>
       </View>
-
     </View>
+      </KeyboardAvoidingView>
   );
 };
 

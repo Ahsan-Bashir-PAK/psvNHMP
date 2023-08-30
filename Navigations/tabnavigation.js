@@ -31,7 +31,7 @@ const MyTabs = () => {
   return (
     <NavigationContainer>
     <Tab.Navigator>
-        <Tab.Screen name="Driver" component={AddDriver}/>
+        <Tab.Screen name="Driver" component={AddDriver}  options={{ tabBarBadge: 3 }}/>
         <Tab.Screen name="SettingsScreen"  component={SettingsScreen} />
       </Tab.Navigator>
       </NavigationContainer>
