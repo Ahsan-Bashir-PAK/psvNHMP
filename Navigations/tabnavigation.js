@@ -5,6 +5,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {View, Text} from 'react-native';
 
 import AddDriver from '../screens/forms/addDriver';
+import { getTabBarHeight } from '@react-navigation/bottom-tabs/lib/typescript/src/views/BottomTabBar';
+import { UserCircle, User  } from 'lucide-react-native';
+import { Pencil } from 'lucide-react-native';
 
 
 function HomeScreen() {
@@ -31,8 +34,18 @@ const MyTabs = () => {
   return (
     <NavigationContainer>
     <Tab.Navigator>
-        <Tab.Screen name="Driver" component={AddDriver}  options={{ tabBarBadge: 3 }}/>
+      <Tab.Screen name="Driver" component={AddDriver} options={{
+        
+        tabBarIcon:()=>(
+          <User  stroke="blue" size={35} fill='white'/>
+        )
+    }}
+    Style={{color:'red'}}
+
+      />
         <Tab.Screen name="SettingsScreen"  component={SettingsScreen} />
+        <Tab.Screen name="SettingsScreen2"  component={SettingsScreen} />
+        <Tab.Screen name="SettingsScreen3"  component={SettingsScreen} />
       </Tab.Navigator>
       </NavigationContainer>
   );

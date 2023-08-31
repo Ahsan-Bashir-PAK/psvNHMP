@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVie
 import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { Scroll } from 'lucide-react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const provices = [
   {label: 'NHMP', value: 'NHMP'},
   {label: 'Punjab', value: 'punjab'},
@@ -77,8 +78,12 @@ function clearall(){
     
 }
   return (
-    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white', flex: 1}}>
+
+   
+    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white'}}>
+   
     <View className="bg-slate-100  flex flex-col h-screen ">
+      <ScrollView className=" border  bg-slate-950">
         
       <View className="bg-slate-100 flex flex-row justify-center items-center rounded-lg shadow-lg shadow-black p-2 m-2">
        
@@ -114,7 +119,7 @@ function clearall(){
         />
 {/* ========================================== d.o.b ============ */}
         <View className="flex flex-row ">
-          <Text className="p-2 font- text-black">
+          <Text className="p-2 font-bold text-black">
             D.O.B
           </Text>
           <DatePicker
@@ -154,6 +159,7 @@ function clearall(){
         <TextInput 
         value={dcell}
         onChange={(e) => dCell(e.target.value)}
+        maxLength={11}
         placeholderTextColor={'grey'} keyboardType='numeric' placeholder="Cell No." className={styles.inputVioletSmall} />
         {/* Disability */}
         <TextInput 
@@ -196,8 +202,8 @@ function clearall(){
         </View>
         {/*   */}
        {/* -------------------------------------------------issue date */}
-         <View className=' border w-2/4 '>
         {/* Provinces list */}
+         <View className=' w-2/4 z-50'>
     
         <DropDownPicker
     
@@ -216,7 +222,7 @@ function clearall(){
             backgroundColor: 'white',
             borderColor: 'blue',
             borderWidth: 1,
-            minHeight: 35,
+            minHeight: 49,
 
                 
           }}
@@ -225,6 +231,7 @@ function clearall(){
         </View>
         
         </View>
+
         {/* issue Date */}
          <View className="  flex flex-row m-1">
           <Text className="p-2 font-extrabold text-black">
@@ -281,8 +288,9 @@ function clearall(){
       <TouchableOpacity  className='bg-[#29378a] px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>SAVE</Text></TouchableOpacity>
       </View>
       </View>
+    </ScrollView>
     </View>
-      </KeyboardAvoidingView>
+    </KeyboardAvoidingView>
   );
 };
 
