@@ -4,6 +4,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from 'react-native-date-picker';
 import { Scroll } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {CameraScreen} from 'react-native-camera-kit';
+
 const provices = [
   {label: 'NHMP', value: 'NHMP'},
   {label: 'Punjab', value: 'punjab'},
@@ -80,10 +82,10 @@ function clearall(){
   return (
 
    
-    <KeyboardAvoidingView behavior='position' style = {{backgroundColor: 'white'}}>
-   
+    
+    <ScrollView className=" border">
     <View className="bg-slate-100  flex flex-col h-screen ">
-      <ScrollView className=" border  bg-slate-950">
+        <KeyboardAvoidingView style = {{backgroundColor: 'white'}}>
         
       <View className="bg-slate-100 flex flex-row justify-center items-center rounded-lg shadow-lg shadow-black p-2 m-2">
        
@@ -288,9 +290,17 @@ function clearall(){
       <TouchableOpacity  className='bg-[#29378a] px-5 py-2 rounded-md m-2'><Text className ='text-white font-extrabold'>SAVE</Text></TouchableOpacity>
       </View>
       </View>
-    </ScrollView>
-    </View>
+     {/* camera */}
+     <View className="border h-10">
+            <TouchableOpacity className="w-full bg-slate-600 text-center items-center p-2">
+                    <Text>Take Picture</Text>
+            </TouchableOpacity>
+
+     </View>
+      
     </KeyboardAvoidingView>
+    </View>
+    </ScrollView>
   );
 };
 
