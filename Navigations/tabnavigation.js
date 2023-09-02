@@ -7,8 +7,9 @@ import {View, Text} from 'react-native';
 import AddDriver from '../screens/forms/addDriver';
 import { getTabBarHeight } from '@react-navigation/bottom-tabs/lib/typescript/src/views/BottomTabBar';
 import { UserCircle, User  } from 'lucide-react-native';
-import { Pencil } from 'lucide-react-native';
-
+import { Pencil, Bus, BusFront } from 'lucide-react-native';
+import CameraKit from 'react-native-camera-kit';
+import {CameraScreen} from 'react-native-camera-kit';
 
 function HomeScreen() {
   return (
@@ -37,15 +38,50 @@ const MyTabs = () => {
       <Tab.Screen name="Driver" component={AddDriver} options={{
         
         tabBarIcon:()=>(
-          <User  stroke="blue" size={35} fill='white'/>
+          <User  stroke="grey" size={35} fill='white'/>
         )
     }}
-    Style={{color:'red'}}
+    
 
       />
-        <Tab.Screen name="SettingsScreen"  component={SettingsScreen} />
-        <Tab.Screen name="SettingsScreen2"  component={SettingsScreen} />
-        <Tab.Screen name="SettingsScreen3"  component={SettingsScreen} />
+        <Tab.Screen name="Bus Info"  component={SettingsScreen} 
+        options={{
+        
+          tabBarIcon:()=>(
+            <Bus  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />
+        <Tab.Screen name="Bus Root"  component={SettingsScreen}
+        options={{
+        
+          tabBarIcon:()=>(
+            <BusFront  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />
+        <Tab.Screen name="Bus Data"  component={SettingsScreen}
+        options={{
+        
+          tabBarIcon:()=>(
+            <BusFront  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />
+<Tab.Screen name="SettingsScreen4"  component={SettingsScreen}
+        options={{
+        
+          tabBarIcon:()=>(
+            <BusFront  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />  
+
+        
       </Tab.Navigator>
       </NavigationContainer>
   );
