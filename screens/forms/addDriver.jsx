@@ -6,6 +6,11 @@ import { Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Camera, CameraScreen, CameraType } from 'react-native-camera-kit';
 import { Bus } from 'lucide-react-native';
+import {WRITE_EXTERNAL_STORAGE} from 'react';
+import { PermissionsAndroid, Platform } from 'react-native';
+
+
+
 
 const provices = [
   { label: 'NHMP', value: 'NHMP' },
@@ -66,7 +71,9 @@ const AddDriver = () => {
   const [hascampermission, setcampermission]= useState(null);
   const [camera, setCamera]= useState(null);
   const [image, setImage] = useState(null);
-  const [type, setType] =useState(CameraType.Back);
+  const [type, setType] =useState(null);
+   const [isPermitted, setIsPermitted] = useState(false);
+  const [captureImages, setCaptureImages] = useState([]);
 
 
 
@@ -87,6 +94,80 @@ const AddDriver = () => {
     //dlIssue('')
     // dlExp('')
   }
+
+// Camera code
+
+const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+         
+          title: 'Camera Permission',
+          message: 'App needs camera permission',
+        },
+      );
+      // If CAMERA Permission is granted
+      
+      return granted === PermissionsAndroid.RESULTS.GRANTED;
+    } catch (err) {
+      console.warn(err);
+      return false;
+    }
+  };
+
+  const requestExternalWritePermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'External Storage Write Permission',
+          message: 'App needs write permission',
+        },
+      );
+      
+      // If WRITE_EXTERNAL_STORAGE Permission is granted
+      
+      return granted === PermissionsAndroid.RESULTS.GRANTED;
+      //console.log(granted === PermissionsAndroid.RESULTS.GRANTED);
+    } catch (err) {
+      console.warn(err);
+      alert('Write permission err', err);
+    }
+    return false;
+  };
+
+  const requestExternalReadPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          title: 'Read Storage Permission',
+          message: 'App needs Read Storage Permission',
+        },
+      );
+      // If READ_EXTERNAL_STORAGE Permission is granted
+      return granted === PermissionsAndroid.RESULTS.GRANTED;
+    } catch (err) {
+      console.warn(err);
+      alert('Read permission err', err);
+    }
+    return false;
+  };
+
+const openCamera = async () => {
+    if (Platform.OS === 'android') {
+      if (await requestCameraPermission()) {
+        if (await requestExternalWritePermission()) {
+          if (await requestExternalReadPermission()) {
+            setIsPermitted(true);
+          } else alert('READ_EXTERNAL_STORAGE permission denied');
+        } else alert('WRITE_EXTERNAL_STORAGE permission denied');
+      } else alert('CAMERA permission denied');
+    } else {
+      setIsPermitted(true);
+    }
+  };
 
 
   return (
@@ -299,12 +380,12 @@ const AddDriver = () => {
         </View>
         {/* camera */}
 
-        <View className="border bg-slate-200 p-2  text-center items-center justify-center">
-        <Bus  stroke="black" size={80} fill='white' />
+        <View className="border h-16 bg-slate-200 p-2  text-center items-center justify-center">
+              {/* <CameraScreen></CameraScreen> */}
 
         </View>
-        <View className="border  p-1 w-3/4">
-          <TouchableOpacity><Text className='text-black'>Camera Pic</Text></TouchableOpacity>
+        <View  className="border  bg-slate-600 rounded-md items-center p-3">
+          <TouchableOpacity onPress={openCamera} ><Text className='text-white'>Open Camera</Text></TouchableOpacity>
         </View>
 
 
