@@ -33,6 +33,7 @@ import Login from './screens/login';
 import MyStack from './Navigations/navigation';
 import Main from './screens/main';
 import MyTabs from './Navigations/tabnavigation';
+import AddVehicle from './screens/forms/addVehicle';
 
 
 function App(): JSX.Element {
@@ -40,8 +41,8 @@ function App(): JSX.Element {
   return (
     
     // <MyStack />
-    <Main />
-    
+    //<Main />
+    <AddVehicle/>
 
     
     

@@ -3,29 +3,35 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {View, Text} from 'react-native';
-
 import AddDriver from '../screens/forms/addDriver';
+import AddVehicle from '../screens/forms/addVehicle';
 import { getTabBarHeight } from '@react-navigation/bottom-tabs/lib/typescript/src/views/BottomTabBar';
 import { UserCircle, User  } from 'lucide-react-native';
 import { Pencil, Bus, BusFront } from 'lucide-react-native';
-import CameraKit from 'react-native-camera-kit';
-import {CameraScreen} from 'react-native-camera-kit';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+// function HomeScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Home!</Text>
+//     </View>
+//   );
+// }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+// function SettingsScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Settings!</Text>
+//     </View>
+//   );
+// }
+// function VehicleInfo() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>dfdsfdsfdsfdsfd//</Text>
+//     </View>
+//   );
+// }
+
 
 
 
@@ -44,7 +50,7 @@ const MyTabs = () => {
     
 
       />
-        <Tab.Screen name="Bus Info"  component={SettingsScreen} 
+        <Tab.Screen name="Vehicle Info"  component={AddVehicle} 
         options={{
         
           tabBarIcon:()=>(
@@ -53,7 +59,7 @@ const MyTabs = () => {
       }}
         
         />
-        <Tab.Screen name="Bus Root"  component={SettingsScreen}
+        {/* <Tab.Screen name="Bus Root"  component={SettingsScreen}
         options={{
         
           tabBarIcon:()=>(
@@ -79,7 +85,7 @@ const MyTabs = () => {
           )
       }}
         
-        />  
+        />   */}
 
         
       </Tab.Navigator>
