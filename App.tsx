@@ -34,6 +34,7 @@ import MyStack from './Navigations/navigation';
 import Main from './screens/main';
 import MyTabs from './Navigations/tabnavigation';
 import AddVehicle from './screens/forms/addVehicle';
+import AddDocumentation from './screens/forms/addDocumentation';
 
 
 function App(): JSX.Element {
@@ -42,8 +43,8 @@ function App(): JSX.Element {
     
     // <MyStack />
     //<Main />
-    <AddVehicle/>
-
+   // <AddVehicle/>
+    <AddDocumentation/>
     
     
     

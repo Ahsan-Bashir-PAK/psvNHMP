@@ -5,7 +5,7 @@ import { BusFront, Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
-import RadioButtonRN from 'radio-buttons-react-native';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'equivalen-simple-radio-button';
 
 
 
@@ -21,7 +21,7 @@ const Vehicletype = [
   { label: 'OTHER', value: 'OTHER' },
 ];
 
-const licienceType = [
+const company_name = [
   { label: 'HTV', value: 'HTV' },
   { label: 'LTV', value: 'LTV' },
   { label: 'PSV', value: 'PSV' },
@@ -30,11 +30,10 @@ const licienceType = [
   { label: 'Other', value: 'Others' },
 
 ];
-  const data = [
-       {  label: 'AC', value:'AC'},
-       {  label: 'Non-AC', Value: 'Non-AC'},
-    ];
-
+const radio_props = [
+  {label: 'AC', value: 0 },
+  {label: 'Non-AC', value: 1 }
+];
 
 const AddVehicle = () => {
  
@@ -175,13 +174,16 @@ const AddVehicle = () => {
                     <View className={styles.labelstyle}><Text className="text-black font-bold">AC or Non AC</Text></View>
                     <View className="w-4/6 items-center">
                     
-                    <RadioButtonRN
-                         data={data}
-                        selectedBtn={(e) => console.log(e)}
-                        
-                    />                
-
-                    
+                    {/* <RadioForm
+                      radio_props={radio_props}
+                      initial={0}
+                      onPress={(value) => {this.setState({value:value})}}
+                      buttonSize={15}
+                      buttonOuterSize={30}
+                      buttonStyle={{}}
+                      buttonWrapStyle={{marginLeft: 10}}
+                    />
+                     */}
                     </View>
               </View>
               {/* Seating Capapcity */}
