@@ -5,7 +5,7 @@ import { BusFront, Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
-
+import RadioButtonRN from 'radio-buttons-react-native';
 
 
 
@@ -30,6 +30,10 @@ const licienceType = [
   { label: 'Other', value: 'Others' },
 
 ];
+  const data = [
+       {  label: 'AC', value:'AC'},
+       {  label: 'Non-AC', Value: 'Non-AC'},
+    ];
 
 
 const AddVehicle = () => {
@@ -41,10 +45,10 @@ const AddVehicle = () => {
   const [provinceOpen, setProvinceOpen] = useState(false);
   const [currentLiceince, setCurrentLiceince,] = useState(null);
   //----------------------------------------
-  const [searchreg, setReg,] = useState(null);
-  const [setyear, setYear,] = useState(null);
+  const [searchreg, setReg] = useState(null);
+  const [setyear, setYear] = useState(null);
 
-
+  const [acstate, setState] = useState(true);
 
 
   function clearall() {
@@ -58,10 +62,10 @@ const AddVehicle = () => {
 
   return (
   <ScrollView className=" border">
-    <View className="bg-slate-100  flex flex-col h-screen border p-2 ">
+    <View className="bg-slate-100  flex flex-col  border p-2 ">
       <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
         {/* Vehicle Information Design Tab */}
-        <View className=" mt-1 w-full h-screen ">
+        <View className=" mt-1 w-full  ">
           
          <View className=" bg-yellow-400  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
             <Text className="text-black text-lg rounded-md font-bold ">Add Vehicle Information</Text>
@@ -170,14 +174,14 @@ const AddVehicle = () => {
               <View className={styles.outerview}>
                     <View className={styles.labelstyle}><Text className="text-black font-bold">AC or Non AC</Text></View>
                     <View className="w-4/6 items-center">
-                    <Switch
-                    trackColor={{false: '#767577', true: '#81b0ff'}}
-                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                     
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
-                    />
+                    <RadioButtonRN
+                         data={data}
+                        selectedBtn={(e) => console.log(e)}
+                        
+                    />                
 
+                    
                     </View>
               </View>
               {/* Seating Capapcity */}
@@ -226,7 +230,7 @@ const AddVehicle = () => {
                     <View className="w-4/6 items-center">
                       <TextInput
                             placeholderTextColor={'grey'}
-                            placeholder='[0000]'
+                            placeholder='[eg 2019]'
                             maxLength={4}
                             className=' border-black text-black rounded-md  text-lg' />
                       </View>
