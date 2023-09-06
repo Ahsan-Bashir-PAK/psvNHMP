@@ -9,29 +9,8 @@ import { getTabBarHeight } from '@react-navigation/bottom-tabs/lib/typescript/sr
 import { UserCircle, User  } from 'lucide-react-native';
 import { Pencil, Bus, BusFront } from 'lucide-react-native';
 import AddDocumentation from '../screens/forms/addDocumentation';
+import AddCondition from '../screens/forms/addCondition';
 
-// function HomeScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Home!</Text>
-//     </View>
-//   );
-// }
-
-// function SettingsScreen() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
-// function VehicleInfo() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>dfdsfdsfdsfdsfd//</Text>
-//     </View>
-//   );
-// }
 
 
 
@@ -69,7 +48,7 @@ const MyTabs = () => {
       }}
         
         />
-        {/* <Tab.Screen name="Bus Data"  component={SettingsScreen}
+         <Tab.Screen name="Bus Data"  component={AddCondition}
         options={{
         
           tabBarIcon:()=>(
@@ -78,7 +57,7 @@ const MyTabs = () => {
       }}
         
         />
-<Tab.Screen name="SettingsScreen4"  component={SettingsScreen}
+{/*<Tab.Screen name="SettingsScreen4"  component={SettingsScreen}
         options={{
         
           tabBarIcon:()=>(

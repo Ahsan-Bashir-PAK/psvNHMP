@@ -1,0 +1,282 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
+import DatePicker from 'react-native-date-picker';
+import { CheckSquare, Disc2, Square, SunDim  } from 'lucide-react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import DropDownPicker from 'react-native-dropdown-picker';
+import RadioButtonRN from 'radio-buttons-react-native';
+
+
+
+const data = [{label: 'Ex'}];
+
+
+const Vehicletype = [
+  { label: 'Select Vehicle Type', value: '-' },
+  { label: 'BUS', value: 'NHMP' },
+  { label: 'VAN', value: 'VAN' },
+  { label: 'HIACE', value: 'HIACE' },
+  { label: 'HIROOF', value: 'HIROOF' },
+  { label: 'COASTER', value: 'COASTER' },
+  { label: 'APV', value: 'APV' },
+  { label: 'OTHER', value: 'OTHER' },
+];
+
+const company_name = [
+  { label: 'HTV', value: 'HTV' },
+  { label: 'LTV', value: 'LTV' },
+  { label: 'PSV', value: 'PSV' },
+  { label: 'HTV / PSV', value: 'HTV /PSV' },
+  { label: 'LTV / PSV', value: 'LTV /PSV' },
+  { label: 'Other', value: 'Others' },
+
+];
+
+
+const AddCondition = () => {
+
+  const [tyrecondition, SettyreCondition] = useState("");
+  const [conditionstate, setConditionState] = useState("");
+
+  //----------------LIGHTS----------------------
+  const [headlight, SetheadLight] =useState("");
+  const [backlight, SetbackLight] =useState("");
+  const [hazardlight, SethazardLight] =useState("");
+  const [foglight, SetfogLight] =useState("");
+  const [emergencylight, SetEmergencyLight] =useState("");
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  //------------------------------------select vehicle type 
+  //-------------------------------------------------------
+  const [provinceOpen, setProvinceOpen] = useState(false);
+  const [currentLiceince, setCurrentLiceince,] = useState(null);
+  //----------------------------------------
+  const [searchreg, setReg] = useState(null);
+  const [setyear, setYear] = useState(null);
+
+  const [acstate, setState] = useState(true);
+
+
+
+  function clearall() {
+
+    setReg('')
+    setYear('')
+
+  }
+
+
+
+  return (
+    <ScrollView className=" border">
+      <View className="bg-slate-100  flex flex-col  border p-2 ">
+        <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
+          {/* Vehicle Tyre Condition Tab */}
+          <View className=" mt-1 w-full  ">
+
+            <View className=" bg-[#facc15]  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
+              <Text className="text-black text-lg rounded-md font-bold ">Vehicle Tyre Condition </Text>
+              {/* <Navigation stroke="black" size={40}></Navigation> */}
+              <Disc2   stroke="#facc15" size={32} fill="black"></Disc2>
+            </View>
+
+
+
+
+            {/*  Tyre Manufacture */}
+            <View className={styles.outerview} >
+              <View className={styles.labelstyle}><Text className="text-black  font-bold">Tyre Manufacture</Text></View>
+              <View className=" w-4/6  items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Tyre Manufacture'
+                  maxLength={50}
+
+                  className=' border-black text-black rounded-md  text-lg' />
+
+              </View>
+            </View>
+            {/* Date of Manufacturing*/}
+            <View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Date Of Manufacturing</Text></View>
+              <View className="w-4/6 items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='----'
+                  maxLength={50}
+                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+
+              </View>
+            </View>
+
+            {/*Date Of Expiry */}
+            <View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Expiry Date</Text></View>
+              <View className="w-4/6 items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Expiry Date'
+                  maxLength={50}
+
+                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+
+              </View>
+            </View>
+
+            {/* Next Checking Date */}
+            <View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Next Checking Date</Text></View>
+              <View className="w-4/6 items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Route Type'
+                  maxLength={70}
+
+                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+
+              </View>
+            </View>
+
+            {/* Tread Size */}
+            <View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Tread Size</Text></View>
+              <View className="w-4/6 items-center">
+              <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='3.5 - 2.0'
+                  maxLength={20}
+                  className=' border-black text-black rounded-md  text-lg' />
+              </View>
+            </View>
+
+            {/* Remarks */}
+            <View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Remarks</Text></View>
+              <View className="w-4/6 items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Remarks if any'
+                  maxLength={30}
+                  className=' border-black text-black rounded-md  text-lg' />
+              </View>
+            </View>
+
+ {/* Excellent */}
+ <View className={` justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md  shadow-md  shadow-blue-900 ${tyrecondition=="Excellent"?"bg-green-700":tyrecondition=="Good"?"bg-blue-500":tyrecondition=='Average'?"bg-yellow-500":tyrecondition=="Poor"?"bg-red-400":"bg-white"}`}> 
+             <View className=" " >
+             <Text className={`text-black `}>{tyrecondition ===""?"Select Tyre Condition":tyrecondition}</Text>
+                    
+            </View>
+            </View>
+
+            {/* Excellent */}
+            <View className=' justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'> 
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Excellent')}  className="bg-[#3bac44]   rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Excellent</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Good')}  className="bg-[#3975b1]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Good</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Average')}  className="bg-[#8c6cd6]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Average</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Poor')}  className="bg-[#cf3e3e] rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Poor</Text></TouchableOpacity>
+             
+            </View>
+           
+           
+            
+{/* Last update Datd */}
+<View className={styles.outerview}>
+              <View className={styles.labelstyle}><Text className="text-black font-bold">Last Update Date</Text></View>
+              <View className="w-4/6 items-center">
+              <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Upload route permit'
+                  maxLength={3}
+                  className=' border-black text-black rounded-md  text-lg ' />
+              </View>
+            </View>
+
+            {/* *******************Vehicle Lights************************* */}
+
+            <View className=" mt-1 w-full  ">
+
+              <View className=" bg-yellow-400  p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
+                <Text className="text-black text-lg rounded-md font-bold ">Vehicle Lights</Text>
+                <SunDim   stroke="black" size={30}></SunDim  >
+              </View>
+
+              {/* Lights */}
+              <View className=" flex flex-row justify-around">
+              <View className=' flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
+                <TouchableOpacity onPressout={()=>SetheadLight('HeadLights')} className='p-2 flex-row gap-1 text-center items-center '><Text className="text-black">{headlight}</Text>
+                
+                <Text className="text-black font-bold">Head Lights</Text></TouchableOpacity>
+
+                </View>
+
+              <View className='justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
+                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Back Lights</Text></TouchableOpacity>
+
+              </View>
+              </View>
+
+
+
+              {/* Lights */}
+              <View className=" flex flex-row justify-around">
+              <View className=' flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
+                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Fog Lights</Text></TouchableOpacity>
+
+              </View>
+
+              <View className='justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
+                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Hazard Lights</Text></TouchableOpacity>
+
+              </View>
+              </View>
+              
+                
+              
+              
+
+              {/* Buttons Save - Clear -Update */}
+              <View className="flex-row items-center justify-center ">
+                <View className=" ">
+                  <TouchableOpacity className="bg-[#227935]  px-8 py-2 rounded-md m-2">
+                    <Text className="text-white  text-lg">Save</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View className="">
+                  <TouchableOpacity className="bg-[#60a532] px-8 py-2 rounded-md m-2">
+                    <Text className="text-white text-lg">Clear</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View className="">
+                  <TouchableOpacity className="bg-[#29378a] px-7 py-2 rounded-md m-2">
+                    <Text className="text-white  text-lg">Update</Text>
+                  </TouchableOpacity>
+                </View>
+
+
+              </View>
+            </View>
+
+</View>
+
+        </KeyboardAvoidingView>
+      </View>
+    </ScrollView>
+  );
+};
+
+export default AddCondition;
+
+const styles = {
+  inputViolet:
+    'w-full  border border-1 border-violet-400 rounded-md m-1 font-bold px-3 py-1 text-black',
+  inputVioletSmall:
+    'w-6/12  border border-1 border-violet-400 rounded-md mx-1 font-bold px-3 py-1 text-black',
+  labelstyle:
+    'text-center items-center justify-center w-2/6  border-r  border-slate-400  ',
+  outerview:
+    'flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'
+};
