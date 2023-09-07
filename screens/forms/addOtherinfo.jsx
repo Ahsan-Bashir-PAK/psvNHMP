@@ -6,76 +6,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
-
-
-
-
-
-
-const Vehicletype = [
-  { label: 'Select Vehicle Type', value: '-' },
-  { label: 'BUS', value: 'NHMP' },
-  { label: 'VAN', value: 'VAN' },
-  { label: 'HIACE', value: 'HIACE' },
-  { label: 'HIROOF', value: 'HIROOF' },
-  { label: 'COASTER', value: 'COASTER' },
-  { label: 'APV', value: 'APV' },
-  { label: 'OTHER', value: 'OTHER' },
-];
-
-const company_name = [
-  { label: 'HTV', value: 'HTV' },
-  { label: 'LTV', value: 'LTV' },
-  { label: 'PSV', value: 'PSV' },
-  { label: 'HTV / PSV', value: 'HTV /PSV' },
-  { label: 'LTV / PSV', value: 'LTV /PSV' },
-  { label: 'Other', value: 'Others' },
-
-];
-
-
 const AddOtherInfo = () => {
 
 
   // Tyre Manufacturing Date
-  const [date, setDate] = useState(new Date())
-  const [open, setOpen] = useState(false)
+  const [numberplate, setnumberPlate] = useState(false)
+  const [sidemirror, setsideMirror] = useState(false)
+  const [frontwipers, setfrontWipers] = useState(false)
+  const [fireext, setfireExt] = useState(false)
+  const [firstaid, setfirstAid] = useState(false)
+  const [zeroseat, setzeroSeat] = useState(false)
 
-  // Tyre expiry Date
-  const [tyredate, settyreDate] = useState(new Date())
-  const [tyreopen, settyreOpen] = useState(false)
-''
-
-  const [tyrecondition, SettyreCondition] = useState("");
-  const [conditionstate, setConditionState] = useState("");
-
-
-  //----------------LIGHTS----------------------
-  const [headlight, SetheadLight] =useState("");
-  const [backlight, SetbackLight] =useState("");
-  const [hazardlight, SethazardLight] =useState("");
-  const [foglight, SetfogLight] =useState("");
-  const [emergencylight, SetemergencyLight] =useState("");
-
+  
   //---------------------------------
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  //------------------------------------select vehicle type 
-//-------------------------------------------dob
 
-
-
-  //-------------------------------------------------------
-  const [provinceOpen, setProvinceOpen] = useState(false);
-  const [currentLiceince, setCurrentLiceince,] = useState(null);
-  //----------------------------------------
-  const [searchreg, setReg] = useState(null);
-  const [setyear, setYear] = useState(null);
-
-  const [acstate, setState] = useState(true);
-
-
-
+   // Fire Ext Date
+   const [fireextdate, setDate] = useState(new Date())
+   const [fireextopen, setOpen] = useState(false)
+  
   function clearall() {
 
     setReg('')
@@ -90,7 +38,7 @@ const AddOtherInfo = () => {
       <View className="bg-slate-100  flex flex-col  border  ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Other Information Tab */}
-          <View className=" w-full h-screen mt-5 p-5">
+          <View className=" w-full h-screen mt-5 P-3 ">
 
             <View className=" bg-[#facc15]  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
               <Text className="text-black text-lg rounded-md font-bold "> Other Information</Text>
@@ -102,47 +50,47 @@ const AddOtherInfo = () => {
             
 
 
-            {/* *******************Vehicle Lights************************* */}
+            
 
             <View className=" mt-1 w-full  ">
 
              
 
-              {/* Head - Back- Fog Lights*/}
+              {/*  */}
               <View className=" flex  justify-around  p-1">
               
-              <View className=' flex flex-row border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity onPress={()=>headlight==""?SetheadLight('HeadLights'):SetheadLight("")}
+              <View className={styles.outerview}>
+                <TouchableOpacity onPress={()=>numberplate==""?setnumberPlate('Numberplate'):setnumberPlate("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${headlight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${headlight == ""? "hidden":"block"}`}></CheckSquare>
-                <Text className="text-black font-bold">Registeration Number Plate</Text></TouchableOpacity>
+                <Square stroke="black" className={`${numberplate == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${numberplate == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Registeration Number Plate as per pattern</Text></TouchableOpacity>
 
                 </View>
               
-              <View className=' flex flex-row border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity onPress={()=>headlight==""?SetheadLight('HeadLights'):SetheadLight("")}
+              <View className={styles.outerview}>
+                <TouchableOpacity onPress={()=>sidemirror==""?setsideMirror('HeadLights'):setsideMirror("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${headlight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${headlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Square stroke="black" className={`${sidemirror == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${sidemirror == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">Side View Mirros</Text></TouchableOpacity>
 
                 </View>
 
-              <View className='justify-around flex  border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-              <TouchableOpacity onPress={()=>backlight==""?SetbackLight('BackLights'):SetbackLight("")}
+              <View className={styles.outerview}>
+              <TouchableOpacity onPress={()=>frontwipers==""?setfrontWipers('BackLights'):setfrontWipers("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${backlight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${backlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Square stroke="black" className={`${frontwipers == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${frontwipers == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">Front Side Wipers</Text></TouchableOpacity>
 
               </View>
 
-              <View className='justify-around flex   border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-              <TouchableOpacity onPress={()=>foglight==""?SetfogLight('FogLights'):SetfogLight("")}
+              <View className={styles.outerview}>
+              <TouchableOpacity onPress={()=>fireext==""?setfireExt('FogLights'):setfireExt("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${foglight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${foglight == ""? "hidden":"block"}`}></CheckSquare>
+                <Square stroke="black" className={`${fireext == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${fireext == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">Fire Extinguisher</Text></TouchableOpacity>
 
               </View>
@@ -157,19 +105,19 @@ const AddOtherInfo = () => {
             <DatePicker
               modal
               mode="date"
-              open={tyreopen}
-              date={tyredate}
+              open={fireextopen}
+              date={fireextdate}
               onConfirm={value => {
-                settyreOpen(false);
-                settyreDate(value);
+                setOpen(false);
+                setDate(value);
               }}
               onCancel={() => {
-                settyreOpen(false);
+                setOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {tyredate.toLocaleDateString()}
+              {fireextdate.toLocaleDateString()}
             </Text>
             <TouchableOpacity onPress={() => settyreOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
@@ -182,33 +130,33 @@ const AddOtherInfo = () => {
 
 
 
-              {/* Hazard & Emergency Lights */}
-              <View className=" flex ">
-              <View className=' flex   border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-              <TouchableOpacity onPress={()=>hazardlight==""?SethazardLight('HazardLights'):SethazardLight("")}
+              {/* First Aid Box*/}
+              <View className={styles.outerview}>
+             
+              <TouchableOpacity onPress={()=>firstaid==""?setfirstAid('FirstAid'):setfirstAid("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${hazardlight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${hazardlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Square stroke="black" className={`${firstaid == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${firstaid == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">First Aid Box</Text></TouchableOpacity>
 
-              </View>
+              
 
             
               </View>
               
-                 {/* Hazard & Emergency Lights */}
-              <View className=" flex ">
-              <View className=' flex   border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
-              <TouchableOpacity onPress={()=>hazardlight==""?SethazardLight('HazardLights'):SethazardLight("")}
+                 {/* Zero Seat */}
+              <View className={styles.outerview}>
+              
+              <TouchableOpacity onPress={()=>zeroseat==""?setzeroSeat('zeroseat'):setzeroSeat("")}
                  className={`p-2 flex-row gap-1 text-center items-center`}>
-                <Square stroke="black" className={`${hazardlight == ""? "block":"hidden"}`} />
-                <CheckSquare stroke="black" className={`${hazardlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Square stroke="black" className={`${zeroseat == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${zeroseat == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">Zero Seat</Text></TouchableOpacity>
 
               </View>
 
             
-              </View>
+             
               
 
               
@@ -257,5 +205,5 @@ const styles = {
   labelstyle:
     'text-center items-center justify-center w-2/6  border-r  border-slate-400  ',
   outerview:
-    'flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'
+    'flex flex-row border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900 p-2 '
 };

@@ -37,6 +37,7 @@ import AddVehicle from './screens/forms/addVehicle';
 import AddDocumentation from './screens/forms/addDocumentation';
 import AddCondition from './screens/forms/addCondition';
 import AddOtherInfo from './screens/forms/addOtherinfo';
+import TripReport from './screens/forms/tripReport';
 
 
 function App(): JSX.Element {
@@ -48,7 +49,8 @@ function App(): JSX.Element {
    //<AddVehicle/>
     //<AddDocumentation/>
    //<AddCondition/>
-    <AddOtherInfo/>
+    //<AddOtherInfo/>
+    <TripReport/>
     
   );
 }
