@@ -134,7 +134,7 @@ const AddOtherInfo = () => {
                  className={`p-2 flex-row gap-1 text-center items-center`}>
                 <Square stroke="black" className={`${backlight == ""? "block":"hidden"}`} />
                 <CheckSquare stroke="black" className={`${backlight == ""? "hidden":"block"}`}></CheckSquare>
-                <Text className="text-black font-bold">Side View Mirrors</Text></TouchableOpacity>
+                <Text className="text-black font-bold">Front Side Wipers</Text></TouchableOpacity>
 
               </View>
 
