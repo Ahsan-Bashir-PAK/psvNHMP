@@ -32,7 +32,7 @@ const company_name = [
 ];
 
 
-const AddVehicle = () => {
+const AddOtherInfo = () => {
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -252,7 +252,7 @@ const AddVehicle = () => {
   );
 };
 
-export default AddVehicle;
+export default AddOtherInfo;
 
 const styles = {
   inputViolet:

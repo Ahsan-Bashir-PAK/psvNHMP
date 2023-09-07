@@ -36,18 +36,19 @@ import MyTabs from './Navigations/tabnavigation';
 import AddVehicle from './screens/forms/addVehicle';
 import AddDocumentation from './screens/forms/addDocumentation';
 import AddCondition from './screens/forms/addCondition';
+import AddOtherInfo from './screens/forms/addOtherinfo';
 
 
 function App(): JSX.Element {
   
   return (
     
-    // <MyStack />
+     //<MyStack />
     //<Main />
-   // <AddVehicle/>
+   //<AddVehicle/>
     //<AddDocumentation/>
-    <AddCondition/>
-    
+   //<AddCondition/>
+    <AddOtherInfo/>
     
   );
 }

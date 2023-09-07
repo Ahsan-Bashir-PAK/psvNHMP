@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { CheckSquare, Disc2, Square, SunDim  } from 'lucide-react-native';
+import { Calendar, CheckSquare, Disc2, Square, SunDim  } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -35,6 +35,16 @@ const company_name = [
 
 const AddCondition = () => {
 
+
+  // Tyre Manufacturing Date
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
+
+  // Tyre expiry Date
+  const [tyredate, settyreDate] = useState(new Date())
+  const [tyreopen, settyreOpen] = useState(false)
+''
+
   const [tyrecondition, SettyreCondition] = useState("");
   const [conditionstate, setConditionState] = useState("");
 
@@ -51,8 +61,7 @@ const AddCondition = () => {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   //------------------------------------select vehicle type 
 //-------------------------------------------dob
-const [dob, setDob] = useState(new Date());
-const [opendob, setOpenDob] = useState(false);
+
 
 
   //-------------------------------------------------------
@@ -104,23 +113,34 @@ const [opendob, setOpenDob] = useState(false);
 
               </View>
             </View>
+ 
             {/* Date of Manufacturing*/}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Date Of Manufacturing</Text></View>
-               <View className="w-4/6 items-center border">
-                 <DatePicker className="border"
-                    modal
-                    mode="date"
-                    open={opendob}
-                    date={dob}
-                    onConfirm={value => {
-                    setOpenDob(false);
-                    setDob(value);
-                    }}
-                     onCancel={() => {
-                       setOpenDob(false);
-                     }}
-                    />
+               <View className="w-4/6 items-center ">
+               <View className="flex flex-row gap-1">
+            
+            <DatePicker
+              modal
+              mode="date"
+              open={open}
+              date={date}
+              onConfirm={value => {
+                setOpen(false);
+                setDate(value);
+              }}
+              onCancel={() => {
+                setOpen(false);
+              }}
+            />
+
+            <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
+              {date.toLocaleDateString()}
+            </Text>
+            <TouchableOpacity onPress={() => setOpen(true)}>
+              <Calendar stroke="black" fill="white" size={30}></Calendar>
+            </TouchableOpacity>
+          </View>
               </View> 
 
             </View>
@@ -129,12 +149,30 @@ const [opendob, setOpenDob] = useState(false);
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Expiry Date</Text></View>
               <View className="w-4/6 items-center">
-                <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='Expiry Date'
-                  maxLength={50}
+              <View className="flex flex-row gap-1">
+            
+            <DatePicker
+              modal
+              mode="date"
+              open={tyreopen}
+              date={tyredate}
+              onConfirm={value => {
+                settyreOpen(false);
+                settyreDate(value);
+              }}
+              onCancel={() => {
+                settyreOpen(false);
+              }}
+            />
 
-                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+            <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
+              {tyredate.toLocaleDateString()}
+            </Text>
+            <TouchableOpacity onPress={() => settyreOpen(true)}>
+              <Calendar stroke="black" fill="white" size={30}></Calendar>
+            </TouchableOpacity>
+          </View>
+              
 
               </View>
             </View>
@@ -165,6 +203,25 @@ const [opendob, setOpenDob] = useState(false);
               </View>
             </View>
 
+           
+
+ {/* Excellent */}
+ <View className={` justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md  shadow-md  shadow-blue-900 ${tyrecondition=="Excellent"?"bg-green-700":tyrecondition=="Good"?"bg-blue-500":tyrecondition=='Average'?"bg-yellow-500":tyrecondition=="Poor"?"bg-red-400":"bg-white"}`}> 
+             <View className=" " >
+             <Text className={`text-black `}>{tyrecondition ===""?"Select Tyre Condition":tyrecondition}</Text>
+                    
+            </View>
+            </View>
+
+            {/* Tyre condition Excellent - Good-Poor-Average */}
+            <View className=' justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'> 
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Excellent')}  className="bg-[#3bac44]   rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Excellent</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Good')}  className="bg-[#3975b1]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Good</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Average')}  className="bg-[#8c6cd6]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Average</Text></TouchableOpacity>
+             <TouchableOpacity onPressOut={()=>SettyreCondition('Poor')}  className="bg-[#cf3e3e] rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Poor</Text></TouchableOpacity>
+             
+            </View>
+           
             {/* Remarks */}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Remarks</Text></View>
@@ -176,37 +233,7 @@ const [opendob, setOpenDob] = useState(false);
                   className=' border-black text-black rounded-md  text-lg' />
               </View>
             </View>
-
- {/* Excellent */}
- <View className={` justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md  shadow-md  shadow-blue-900 ${tyrecondition=="Excellent"?"bg-green-700":tyrecondition=="Good"?"bg-blue-500":tyrecondition=='Average'?"bg-yellow-500":tyrecondition=="Poor"?"bg-red-400":"bg-white"}`}> 
-             <View className=" " >
-             <Text className={`text-black `}>{tyrecondition ===""?"Select Tyre Condition":tyrecondition}</Text>
-                    
-            </View>
-            </View>
-
-            {/* Excellent */}
-            <View className=' justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'> 
-             <TouchableOpacity onPressOut={()=>SettyreCondition('Excellent')}  className="bg-[#3bac44]   rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Excellent</Text></TouchableOpacity>
-             <TouchableOpacity onPressOut={()=>SettyreCondition('Good')}  className="bg-[#3975b1]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Good</Text></TouchableOpacity>
-             <TouchableOpacity onPressOut={()=>SettyreCondition('Average')}  className="bg-[#8c6cd6]  rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Average</Text></TouchableOpacity>
-             <TouchableOpacity onPressOut={()=>SettyreCondition('Poor')}  className="bg-[#cf3e3e] rounded-md p-2 justify-around m-1 w-[75]" ><Text className="text-white text-sm text-center  ">Poor</Text></TouchableOpacity>
-             
-            </View>
-           
-           
             
-{/* Last update Date */}
-<View className={styles.outerview}>
-              <View className={styles.labelstyle}><Text className="text-black font-bold">Last Update Date</Text></View>
-              <View className="w-4/6 items-center">
-              <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='Upload route permit'
-                  maxLength={3}
-                  className=' border-black text-black rounded-md  text-lg ' />
-              </View>
-            </View>
 
             {/* *******************Vehicle Lights************************* */}
 

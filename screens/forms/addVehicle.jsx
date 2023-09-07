@@ -5,7 +5,7 @@ import { BusFront, Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'equivalen-simple-radio-button';
+
 
 
 
