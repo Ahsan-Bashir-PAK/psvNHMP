@@ -4,11 +4,11 @@ import DatePicker from 'react-native-date-picker';
 import { CheckSquare, Disc2, Square, SunDim  } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
-import RadioButtonRN from 'radio-buttons-react-native';
 
 
 
-const data = [{label: 'Ex'}];
+
+
 
 
 const Vehicletype = [
@@ -38,16 +38,23 @@ const AddCondition = () => {
   const [tyrecondition, SettyreCondition] = useState("");
   const [conditionstate, setConditionState] = useState("");
 
+
   //----------------LIGHTS----------------------
   const [headlight, SetheadLight] =useState("");
   const [backlight, SetbackLight] =useState("");
   const [hazardlight, SethazardLight] =useState("");
   const [foglight, SetfogLight] =useState("");
-  const [emergencylight, SetEmergencyLight] =useState("");
+  const [emergencylight, SetemergencyLight] =useState("");
 
+  //---------------------------------
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   //------------------------------------select vehicle type 
+//-------------------------------------------dob
+const [dob, setDob] = useState(new Date());
+const [opendob, setOpenDob] = useState(false);
+
+
   //-------------------------------------------------------
   const [provinceOpen, setProvinceOpen] = useState(false);
   const [currentLiceince, setCurrentLiceince,] = useState(null);
@@ -76,7 +83,7 @@ const AddCondition = () => {
           <View className=" mt-1 w-full  ">
 
             <View className=" bg-[#facc15]  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
-              <Text className="text-black text-lg rounded-md font-bold ">Vehicle Tyre Condition </Text>
+              <Text className="text-black text-lg rounded-md font-bold "> Tyre Condition </Text>
               {/* <Navigation stroke="black" size={40}></Navigation> */}
               <Disc2   stroke="#facc15" size={32} fill="black"></Disc2>
             </View>
@@ -90,7 +97,7 @@ const AddCondition = () => {
               <View className=" w-4/6  items-center">
                 <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='Tyre Manufacture'
+                  placeholder='Company Manufacture'
                   maxLength={50}
 
                   className=' border-black text-black rounded-md  text-lg' />
@@ -100,14 +107,22 @@ const AddCondition = () => {
             {/* Date of Manufacturing*/}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Date Of Manufacturing</Text></View>
-              <View className="w-4/6 items-center">
-                <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='----'
-                  maxLength={50}
-                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+               <View className="w-4/6 items-center border">
+                 <DatePicker className="border"
+                    modal
+                    mode="date"
+                    open={opendob}
+                    date={dob}
+                    onConfirm={value => {
+                    setOpenDob(false);
+                    setDob(value);
+                    }}
+                     onCancel={() => {
+                       setOpenDob(false);
+                     }}
+                    />
+              </View> 
 
-              </View>
             </View>
 
             {/*Date Of Expiry */}
@@ -181,7 +196,7 @@ const AddCondition = () => {
            
            
             
-{/* Last update Datd */}
+{/* Last update Date */}
 <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Last Update Date</Text></View>
               <View className="w-4/6 items-center">
@@ -197,37 +212,60 @@ const AddCondition = () => {
 
             <View className=" mt-1 w-full  ">
 
-              <View className=" bg-yellow-400  p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
-                <Text className="text-black text-lg rounded-md font-bold ">Vehicle Lights</Text>
+              <View className=" bg-yellow-400   m-1 w-fit items-center justify-center flex-row-reverse ">
+                <Text className="text-black text-lg rounded-md font-bold ">Lights Info</Text>
                 <SunDim   stroke="black" size={30}></SunDim  >
               </View>
 
-              {/* Lights */}
-              <View className=" flex flex-row justify-around">
-              <View className=' flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity onPressout={()=>SetheadLight('HeadLights')} className='p-2 flex-row gap-1 text-center items-center '><Text className="text-black">{headlight}</Text>
-                
+              {/* Head - Back- Fog Lights*/}
+              <View className=" flex flex-row justify-around  p-1">
+              <View className=' flex flex-row border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
+                <TouchableOpacity onPress={()=>headlight==""?SetheadLight('HeadLights'):SetheadLight("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${headlight == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${headlight == ""? "hidden":"block"}`}></CheckSquare>
                 <Text className="text-black font-bold">Head Lights</Text></TouchableOpacity>
 
                 </View>
 
-              <View className='justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Back Lights</Text></TouchableOpacity>
+              <View className='justify-around flex flex-row  border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
+              <TouchableOpacity onPress={()=>backlight==""?SetbackLight('BackLights'):SetbackLight("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${backlight == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${backlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Back Lights</Text></TouchableOpacity>
+
+              </View>
+
+              <View className='justify-around flex flex-row  border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
+              <TouchableOpacity onPress={()=>foglight==""?SetfogLight('FogLights'):SetfogLight("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${foglight == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${foglight == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Fog Lights</Text></TouchableOpacity>
 
               </View>
               </View>
 
 
 
-              {/* Lights */}
+              {/* Hazard & Emergency Lights */}
               <View className=" flex flex-row justify-around">
-              <View className=' flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Fog Lights</Text></TouchableOpacity>
+              <View className=' flex flex-row w-[170] border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'>
+              <TouchableOpacity onPress={()=>hazardlight==""?SethazardLight('HazardLights'):SethazardLight("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${hazardlight == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${hazardlight == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Hazard Lights</Text></TouchableOpacity>
 
               </View>
 
-              <View className='justify-around flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
-                <TouchableOpacity className="  p-2 flex-row gap-1 text-center items-center">{}<Square stroke="black" ></Square><Text className="text-black font-bold">Hazard Lights</Text></TouchableOpacity>
+              <View className='justify-around flex flex-row w-[170] border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'>
+              <TouchableOpacity onPress={()=>emergencylight==""?SetemergencyLight('EmergencyLights'):SetemergencyLight("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${emergencylight == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${emergencylight == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Emergency Lights</Text></TouchableOpacity>
 
               </View>
               </View>

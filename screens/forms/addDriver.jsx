@@ -94,66 +94,6 @@ const AddDriver = () => {
     // dlExp('')
   }
 
-// Camera code
-
-// const requestCameraPermission = async () => {
-//     try {
-//       const granted = await PermissionsAndroid.request(
-//         PermissionsAndroid.PERMISSIONS.CAMERA,
-//         {
-         
-//           title: 'Camera Permission',
-//           message: 'App needs camera permission',
-//         },
-//       );
-//       // If CAMERA Permission is granted
-      
-//       return granted === PermissionsAndroid.RESULTS.GRANTED;
-//     } catch (err) {
-//       console.warn(err);
-//       return false;
-//     }
-//   };
-
-//   const requestExternalWritePermission = async () => {
-//     try {
-//       const granted = await PermissionsAndroid.request(
-//         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-//         {
-//           title: 'External Storage Write Permission',
-//           message: 'App needs write permission',
-//         },
-//       );
-      
-//       // If WRITE_EXTERNAL_STORAGE Permission is granted
-      
-//       return granted === PermissionsAndroid.RESULTS.GRANTED;
-//       //console.log(granted === PermissionsAndroid.RESULTS.GRANTED);
-//     } catch (err) {
-//       console.warn(err);
-//       alert('Write permission err', err);
-//     }
-//     return false;
-//   };
-
-//   const requestExternalReadPermission = async () => {
-//     try {
-//       const granted = await PermissionsAndroid.request(
-//         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-//         {
-//           title: 'Read Storage Permission',
-//           message: 'App needs Read Storage Permission',
-//         },
-//       );
-//       // If READ_EXTERNAL_STORAGE Permission is granted
-//       return granted === PermissionsAndroid.RESULTS.GRANTED;
-//     } catch (err) {
-//       console.warn(err);
-//       alert('Read permission err', err);
-//     }
-//     return false;
-//   };
-
 
 
   return (

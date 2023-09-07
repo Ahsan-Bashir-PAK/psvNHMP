@@ -174,16 +174,7 @@ const AddVehicle = () => {
                     <View className={styles.labelstyle}><Text className="text-black font-bold">AC or Non AC</Text></View>
                     <View className="w-4/6 items-center">
                     
-                    {/* <RadioForm
-                      radio_props={radio_props}
-                      initial={0}
-                      onPress={(value) => {this.setState({value:value})}}
-                      buttonSize={15}
-                      buttonOuterSize={30}
-                      buttonStyle={{}}
-                      buttonWrapStyle={{marginLeft: 10}}
-                    />
-                     */}
+                 
                     </View>
               </View>
               {/* Seating Capapcity */}
