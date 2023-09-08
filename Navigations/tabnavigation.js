@@ -11,6 +11,7 @@ import { Pencil, Bus, BusFront } from 'lucide-react-native';
 import AddDocumentation from '../screens/forms/addDocumentation';
 import AddCondition from '../screens/forms/addCondition';
 import AddOtherInfo from '../screens/forms/addOtherinfo';
+import TripReport from '../screens/forms/tripReport';
 
 
 
@@ -68,7 +69,17 @@ const MyTabs = () => {
       }}
         
         />
+
+<Tab.Screen name="Trip Report"  component={TripReport}
+        options={{
         
+          tabBarIcon:()=>(
+            <BusFront  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />
+
       </Tab.Navigator>
       </NavigationContainer>
   );

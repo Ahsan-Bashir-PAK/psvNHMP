@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { BusFront, Scroll, User } from 'lucide-react-native';
+import { BusFront, Scroll, User, Square, CheckSquare } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
@@ -33,8 +33,10 @@ const company_name = [
 
 const AddVehicle = () => {
 
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [tracker, setTracker] = useState(false);
+  const [emergencyExit, setEmergencyExit] = useState(false);
+  const [ac, setAc] = useState(false);
+
   //------------------------------------select vehicle type 
   //-------------------------------------------------------
   const [provinceOpen, setProvinceOpen] = useState(false);
@@ -173,7 +175,11 @@ const AddVehicle = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">AC or Non AC</Text></View>
             <View className="w-4/6 items-center">
-
+            <TouchableOpacity onPress={()=>ac==""?setAc('AC'):setAc("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${ac == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${ac == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">{ac=="" ?"Non-AC":" AC"}</Text></TouchableOpacity>
 
             </View>
           </View>
@@ -194,11 +200,11 @@ const AddVehicle = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">Tracker Installed</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='Tracker Installed'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+            <TouchableOpacity onPress={()=>tracker==""?setTracker('FirstAid'):setTracker("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${tracker == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${tracker == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">{tracker=="" ?"Not Installed":" Tracker Installed"}</Text></TouchableOpacity>
             </View>
           </View>
 
@@ -206,11 +212,11 @@ const AddVehicle = () => {
            <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">Emergency Exit Gate</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='Exit'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+              <TouchableOpacity onPress={()=>emergencyExit==""?setEmergencyExit('FirstAid'):setEmergencyExit("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${emergencyExit == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${emergencyExit == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">{emergencyExit=="" ?"Not Installed":"Exit Gate Installed"}</Text></TouchableOpacity>
             </View>
           </View>
 
@@ -221,7 +227,9 @@ const AddVehicle = () => {
               <TextInput
                 placeholderTextColor={'grey'}
                 placeholder='[2021]'
-                maxLength={30}
+                maxLength={4}
+                minLength={2}
+                keyboardType='numeric'
                 className=' border-black text-black rounded-md  text-lg' />
             </View>
           </View>
