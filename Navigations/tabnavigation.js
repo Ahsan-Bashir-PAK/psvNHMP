@@ -10,6 +10,7 @@ import { UserCircle, User  } from 'lucide-react-native';
 import { Pencil, Bus, BusFront } from 'lucide-react-native';
 import AddDocumentation from '../screens/forms/addDocumentation';
 import AddCondition from '../screens/forms/addCondition';
+import AddOtherInfo from '../screens/forms/addOtherinfo';
 
 
 
@@ -21,7 +22,7 @@ const MyTabs = () => {
   return (
     <NavigationContainer>
     <Tab.Navigator>
-      <Tab.Screen name="Driver" component={AddDriver} options={{
+      <Tab.Screen name="Add Driver" component={AddDriver} options={{
         
         tabBarIcon:()=>(
           <User  stroke="grey" size={35} fill='white'/>
@@ -30,7 +31,7 @@ const MyTabs = () => {
     
 
       />
-        <Tab.Screen name="Vehicle Info"  component={AddVehicle} 
+        <Tab.Screen name="Add Vehicle"  component={AddVehicle} 
         options={{
         
           tabBarIcon:()=>(
@@ -39,7 +40,7 @@ const MyTabs = () => {
       }}
         
         />
-        <Tab.Screen name="Bus Root"  component={AddDocumentation}
+        <Tab.Screen name="Add Documentation"  component={AddDocumentation}
         options={{
         
           tabBarIcon:()=>(
@@ -48,7 +49,7 @@ const MyTabs = () => {
       }}
         
         />
-         <Tab.Screen name="Bus Data"  component={AddCondition}
+         <Tab.Screen name="Add Condition"  component={AddCondition}
         options={{
         
           tabBarIcon:()=>(
@@ -57,16 +58,16 @@ const MyTabs = () => {
       }}
         
         />
-{/*<Tab.Screen name="SettingsScreen4"  component={SettingsScreen}
-        options={{
-        
-          tabBarIcon:()=>(
-            <BusFront  stroke="grey" size={35} fill='white' />
-          )
-      }}
-        
-        />   */}
 
+<Tab.Screen name="Other Info"  component={AddOtherInfo}
+        options={{
+        
+          tabBarIcon:()=>(
+            <BusFront  stroke="grey" size={35} fill='white' />
+          )
+      }}
+        
+        />
         
       </Tab.Navigator>
       </NavigationContainer>

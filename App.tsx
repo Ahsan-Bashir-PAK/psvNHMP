@@ -44,13 +44,13 @@ function App(): JSX.Element {
   
   return (
     
-     //<MyStack />
+     <MyStack />
     //<Main />
    //<AddVehicle/>
     //<AddDocumentation/>
    //<AddCondition/>
     //<AddOtherInfo/>
-    <TripReport/>
+    //<TripReport/>
     
   );
 }

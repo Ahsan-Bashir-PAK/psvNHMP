@@ -1,38 +1,28 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { BusFront, Scroll, User, FileText, Navigation,ArrowUpRightSquare  } from 'lucide-react-native';
+import { BusFront, Scroll, User, FileText, Navigation,ArrowUpRightSquare, Calendar  } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
 
 
 
-
-
-const Vehicletype = [
-  { label: 'Select Vehicle Type', value: '-' },
-  { label: 'BUS', value: 'NHMP' },
-  { label: 'VAN', value: 'VAN' },
-  { label: 'HIACE', value: 'HIACE' },
-  { label: 'HIROOF', value: 'HIROOF' },
-  { label: 'COASTER', value: 'COASTER' },
-  { label: 'APV', value: 'APV' },
-  { label: 'OTHER', value: 'OTHER' },
+const provices = [
+  { label: 'Temporary', value: 'Temporary' },
+  { label: 'Permanent', value: 'Permanent' }
 ];
 
-const company_name = [
-  { label: 'HTV', value: 'HTV' },
-  { label: 'LTV', value: 'LTV' },
-  { label: 'PSV', value: 'PSV' },
-  { label: 'HTV / PSV', value: 'HTV /PSV' },
-  { label: 'LTV / PSV', value: 'LTV /PSV' },
-  { label: 'Other', value: 'Others' },
+const route_type = [
+  { label: 'Temporary', value: 'Temporary' },
+  { label: 'Permanent', value: 'Permanent' }
 
 ];
 
 
-const AddOtherInfo = () => {
+const AddDocumentation = () => {
+
+  
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -41,11 +31,20 @@ const AddOtherInfo = () => {
   const [provinceOpen, setProvinceOpen] = useState(false);
   const [currentLiceince, setCurrentLiceince,] = useState(null);
   //----------------------------------------
+  const [LcOpen, setLcOpen] = useState(false);
+  const [currentProvince, setCurrentProvince] = useState(null);
+  
   const [searchreg, setReg] = useState(null);
   const [setyear, setYear] = useState(null);
 
   const [acstate, setState] = useState(true);
 
+   //---------------------------------
+
+   // Fire Ext Date
+   const [fireextdate, setDate] = useState(new Date())
+   const [fireextopen, setOpen] = useState(false)
+  
 
   function clearall() {
 
@@ -57,7 +56,7 @@ const AddOtherInfo = () => {
 
 
   return (
-    <ScrollView className=" border">
+    // <ScrollView className=" border">
       <View className="bg-slate-100  flex flex-col  border p-2 ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Vehicle Information Design Tab */}
@@ -85,43 +84,85 @@ const AddOtherInfo = () => {
 
               </View>
             </View>
-            {/* Issuing Authority*/}
+           
+            {/* Issuing Authority */}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Issuing Authority</Text></View>
               <View className="w-4/6 items-center">
-                <TextInput
+              <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='Issuing Autority'
-                  maxLength={50}
-                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
-
+                  placeholder='Authority'
+                  maxLength={100}
+                  className=' border-black text-black rounded-md  text-lg' />
               </View>
             </View>
+
             {/* Expiry Date */}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Expiry Date</Text></View>
               <View className="w-4/6 items-center">
-                <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='Expiry Date'
-                  maxLength={50}
+              <View className="flex flex-row gap-1">
+            
+            <DatePicker
+              modal
+              mode="date"
+              open={fireextopen}
+              date={fireextdate}
+              onConfirm={value => {
+                setOpen(false);
+                setDate(value);
+              }}
+              onCancel={() => {
+                setOpen(false);
+              }}
+            />
 
-                  className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+            <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
+              {fireextdate.toLocaleDateString()}
+            </Text>
+            <TouchableOpacity onPress={() => settyreOpen(true)}>
+              <Calendar stroke="black" fill="white" size={30}></Calendar>
+            </TouchableOpacity>
+          </View>
+              
+
 
               </View>
             </View>
-            {/* Route Type */}
+
+            {/* Route Type*/}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route Type</Text></View>
-              <View className="w-4/6 items-center">
-                <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='Route Type'
-                  maxLength={70}
+              <View className="w-4/6 items-center z- 25">
+              <View className=' w-2/4 '>
 
-                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+              <DropDownPicker
 
-              </View>
+                items={provices}
+                open={provinceOpen}
+                setOpen={() => setProvinceOpen(!provinceOpen)}
+                value={currentProvince}
+                setValue={val => setCurrentProvince(val)}
+                placeholder="Issuing Authority"
+                placeholderStyle={{ color: 'darkgray' }}
+                dropDownContainerStyle={{
+                  backgroundColor: "white"
+                }}
+
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: 'blue',
+                  borderWidth: 1,
+                  position:'relative',
+                  zIndex: 5
+
+
+
+                }}
+              />
+
+            </View>
+            </View>
             </View>
             {/* Route From */}
             <View className={styles.outerview}>
@@ -130,10 +171,11 @@ const AddOtherInfo = () => {
               <TextInput
                   placeholderTextColor={'grey'}
                   placeholder='from'
-                  maxLength={20}
+                  maxLength={100}
                   className=' border-black text-black rounded-md  text-lg' />
               </View>
             </View>
+            
             {/* Route To */}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route To</Text></View>
@@ -150,13 +192,15 @@ const AddOtherInfo = () => {
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route Via</Text></View>
               <View className="w-4/6 items-center">
-                <Switch
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+              <View className="w-4/6 items-center">
+                <TextInput
+                  placeholderTextColor={'grey'}
+                  placeholder='Route via'
+                  maxLength={70}
 
-                  onValueChange={toggleSwitch}
-                  value={isEnabled}
-                />
+                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+
+              </View>
               </View>
             </View>
 
@@ -164,13 +208,7 @@ const AddOtherInfo = () => {
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Upload Route Permit</Text></View>
               <View className="w-4/6 items-center">
-                <Switch
-                  trackColor={{ false: '#767577', true: '#81b0ff' }}
-                  thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-
-                  onValueChange={toggleSwitch}
-                  value={isEnabled}
-                />
+               
               </View>
             </View>
 
@@ -199,12 +237,30 @@ const AddOtherInfo = () => {
               <View className={styles.outerview}>
                 <View className={styles.labelstyle}><Text className="text-black font-bold">Fitness Expiry Date</Text></View>
                 <View className="w-4/6 items-center">
-                  <TextInput
-                    placeholderTextColor={'grey'}
-                    placeholder='Expiry'
-                    maxLength={20}
-                    className=' border-black text-black rounded-md  text-lg' />
-                </View>
+                <View className="flex flex-row gap-1">
+            
+            <DatePicker
+              modal
+              mode="date"
+              open={fireextopen}
+              date={fireextdate}
+              onConfirm={value => {
+                setOpen(false);
+                setDate(value);
+              }}
+              onCancel={() => {
+                setOpen(false);
+              }}
+            />
+
+            <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
+              {fireextdate.toLocaleDateString()}
+            </Text>
+            <TouchableOpacity onPress={() => settyreOpen(true)}>
+              <Calendar stroke="black" fill="white" size={30}></Calendar>
+            </TouchableOpacity>
+          </View>
+          </View>
               </View>
 
               {/* Fitness Issuing Autority */}
@@ -229,7 +285,7 @@ const AddOtherInfo = () => {
                 </View>
 
                 <View className="">
-                  <TouchableOpacity className="bg-[#60a532] px-8 py-2 rounded-md m-2">
+                  <TouchableOpacity className="bg-[#a54932] px-8 py-2 rounded-md m-2">
                     <Text className="text-white text-lg">Clear</Text>
                   </TouchableOpacity>
                 </View>
@@ -248,11 +304,11 @@ const AddOtherInfo = () => {
 
         </KeyboardAvoidingView>
       </View>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 
-export default AddOtherInfo;
+export default AddDocumentation;
 
 const styles = {
   inputViolet:
