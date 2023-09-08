@@ -35,7 +35,7 @@ const AddOtherInfo = () => {
 
   return (
     <ScrollView className=" border">
-      <View className="bg-slate-100  flex flex-col  border  ">
+      <View className="bg-slate-100  flex flex-col  justify-center border  ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Other Information Tab */}
           <View className=" w-full h-screen mt-5 P-3 ">

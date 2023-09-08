@@ -16,14 +16,19 @@ const TripReport = () => {
 
   return (
   <ScrollView className=" border">
-    <View className="bg-slate-100  flex flex-col  border p-2 ">
+    <View className="bg-slate-100  flex flex-col h-screen border p-2 justify-center">
       <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
         {/* Vehicle Information Design Tab */}
         <View className=" mt-1 w-full  ">
           
-         <View className=" bg-yellow-400  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
+         <View className=" bg-yellow-400  rounded-md p-1  w-fit items-center justify-center flex-row-reverse ">
             <Text className="text-black text-lg rounded-md font-bold ">Vehicle Trip Report </Text>
             <BusFront stroke="black" size={40}></BusFront>
+        </View>
+{/* Vehicle Number */}
+        <View className=" bg-yellow-600  rounded-md m-1 w-fit items-center justify-center flex-row-reverse ">
+            <Text className="text-black text-lg rounded-md font-bold ">Report of BUS No: LES-19-1111 </Text>
+            
         </View> 
 
             {/*  Route Permit Date */}
@@ -125,58 +130,35 @@ const TripReport = () => {
               </View>
 
               {/* Road Worthy */}
-              <View className={styles.outerview}>
-                    <View className={styles.labelstyle}><Text className="text-black font-bold">Road Worthy</Text></View>
-                    <View className="w-4/6 items-center">
-                      <TextInput
-                            placeholderTextColor={'grey'}
-                            placeholder='[eg 2019]'
-                            maxLength={4}
-                            className=' border-black text-black rounded-md  text-lg' />
-                      </View>
+            <View className="  p-2 flex flex-row  bg-slate-100">             
+              <View className=" bg-[#44cf56] border border-gray-300 p-3 w-2/4 rounded-md shadow-md  shadow-blue-900">
+                    <Text className="text-black font-bold">Road Worthy</Text>
+                    
               </View>
-
-              {/* Warning */}
-              <View className={styles.outerview}>
-                    <View className={styles.labelstyle}><Text className="text-black font-bold">Warning</Text></View>
-                    <View className="w-4/6 items-center">
-                      <TextInput
-                              placeholderTextColor={'grey'}
-                              placeholder='company Name'
-                              maxLength={20}
-                              className=' border-black text-black rounded-md  text-lg' />
-                      </View>
+              {/* warning */}
+              <View className=" bg-[#e2d741] border border-gray-300 w-2/4 p-3 rounded-md shadow-md  shadow-blue-900">
+                        <Text className="text-black font-bold">Warning</Text>
+                    
                 </View>
-
+                </View>
+                <View className="  p-2 flex flex-row bg-slate-100">   
+                {/* Returned*/}
+              <View className="border bg-[#eca240] border-gray-300 p-3 w-2/4 rounded-md shadow-md  shadow-blue-900">
+                        <Text className="text-black font-bold">Returned</Text>
+                    
+                </View>
                 {/* Enforced */}
-              <View className={styles.outerview}>
-                    <View className={styles.labelstyle}><Text className="text-black font-bold">Enforced</Text></View>
-                    <View className="w-4/6 items-center">
-                      <TextInput
-                              placeholderTextColor={'grey'}
-                              placeholder='company Name'
-                              maxLength={20}
-                              className=' border-black text-black rounded-md  text-lg' />
-                      </View>
+              <View className="border bg-[#db5151] border-gray-300 p-3 w-2/4 rounded-md  shadow-md  shadow-blue-900">
+                        <Text className="text-black font-bold">Enforced</Text>
+                    
                 </View>
-
-                 {/* Returned */}
-              <View className={styles.outerview}>
-                    <View className={styles.labelstyle}><Text className="text-black font-bold">Returned</Text></View>
-                    <View className="w-4/6 items-center">
-                      <TextInput
-                              placeholderTextColor={'grey'}
-                              placeholder='company Name'
-                              maxLength={20}
-                              className=' border-black text-black rounded-md  text-lg' />
-                      </View>
                 </View>
-              
+               
 
             {/* Buttons Save - Clear -Update */}
             <View className="flex-row items-center justify-center  w-fit">
-                    <View className="  items-center w-full  ">
-                      <TouchableOpacity className="bg-[#227935]  w-full rounded-md m-2 p-1">
+                    <View className="  justify center items-center w-full  ">
+                      <TouchableOpacity className="bg-[#227935] items-center  w-full rounded-md m-2 p-1">
                         <Text className="text-white  text-lg">Save</Text>
                       </TouchableOpacity>
                       </View>

@@ -56,7 +56,7 @@ const AddDocumentation = () => {
 
 
   return (
-    // <ScrollView className=" border">
+     <ScrollView>
       <View className="bg-slate-100  flex flex-col  border p-2 ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Vehicle Information Design Tab */}
@@ -304,7 +304,7 @@ const AddDocumentation = () => {
 
         </KeyboardAvoidingView>
       </View>
-    // </ScrollView>
+    </ScrollView>
   );
 };
 

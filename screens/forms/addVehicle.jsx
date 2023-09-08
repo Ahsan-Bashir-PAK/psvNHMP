@@ -8,6 +8,15 @@ import { Bus } from 'lucide-react-native';
 
 
 
+const provices = [
+  { label: 'NHMP', value: 'NHMP' },
+  { label: 'Punjab', value: 'punjab' },
+  { label: 'Sindh', value: 'sindh' },
+  { label: 'KPK', value: 'kpk' },
+  { label: 'Blochistan', value: 'Blochistan' },
+  { label: 'Islamabad', value: 'islamabad' },
+  { label: 'AJK', value: 'AJK' },
+];
 
 
 const Vehicletype = [
@@ -33,20 +42,24 @@ const company_name = [
 
 const AddVehicle = () => {
 
+  const [provinceOpen, setProvinceOpen] = useState(false);
+  const [currentLiceince, setCurrentLiceince,] = useState(null);
+
   const [tracker, setTracker] = useState(false);
   const [emergencyExit, setEmergencyExit] = useState(false);
   const [ac, setAc] = useState(false);
 
   //------------------------------------select vehicle type 
   //-------------------------------------------------------
-  const [provinceOpen, setProvinceOpen] = useState(false);
-  const [currentLiceince, setCurrentLiceince,] = useState(null);
+
   //----------------------------------------
   const [searchreg, setReg] = useState(null);
   const [setyear, setYear] = useState(null);
 
   const [acstate, setState] = useState(true);
 
+  const [LcOpen, setLcOpen] = useState(false);
+  const [currentProvince, setCurrentProvince] = useState(null)
 
   function clearall() {
 
@@ -58,8 +71,8 @@ const AddVehicle = () => {
 
 
   return (
-    <ScrollView className=" ">
-      <View className=" flex flex-col  p-1 ">
+    // <ScrollView className=" ">
+      <View className=" flex flex-col  p-4 ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
 
           {/* Vehicle Information Design Tab */}
@@ -74,8 +87,35 @@ const AddVehicle = () => {
           {/*  Select vehcile Type */}
           <View className={`${styles.outerview} `} style={{}} >
             <View className={styles.labelstyle}><Text className="text-black  font-bold">Vehicle Type</Text></View>
-            <View className=" w-4/6  items-center">
+            <View className=" w-4/6  border p-2 items-center bg-slate-400 ">
+              <View className=" m-1  z-50">
+              
+              <DropDownPicker className=""
 
+              items={provices}
+              open={provinceOpen}
+              setOpen={() => setProvinceOpen(!provinceOpen)}
+              value={currentProvince}
+              setValue={val => setCurrentProvince(val)}
+              placeholder="Issuing Authority"
+              placeholderStyle={{ color: 'darkgray' }}
+              dropDownContainerStyle={{
+                backgroundColor: "white",
+                position:'absolute',
+                zIndex:1000,
+              }}
+
+              style={{
+                backgroundColor: 'white',
+                borderColor: 'blue',
+                borderWidth: 1,
+                minHeight: 49,
+                
+
+
+              }}
+              />
+            </View>
             </View>
           </View>
 
@@ -191,6 +231,7 @@ const AddVehicle = () => {
               <TextInput
                 placeholderTextColor={'grey'}
                 placeholder='Seating Capacity'
+                keyboardType='numeric'
                 maxLength={3}
                 className=' border-black text-black rounded-md  text-lg' />
             </View>
@@ -272,7 +313,7 @@ const AddVehicle = () => {
 
         </KeyboardAvoidingView>
       </View>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 

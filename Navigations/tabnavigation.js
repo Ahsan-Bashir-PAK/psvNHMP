@@ -70,15 +70,6 @@ const MyTabs = () => {
         
         />
 
-<Tab.Screen name="Trip Report"  component={TripReport}
-        options={{
-        
-          tabBarIcon:()=>(
-            <BusFront  stroke="grey" size={35} fill='white' />
-          )
-      }}
-        
-        />
 
       </Tab.Navigator>
       </NavigationContainer>

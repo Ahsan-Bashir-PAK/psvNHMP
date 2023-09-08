@@ -46,11 +46,12 @@ function App(): JSX.Element {
     
     //<MyStack />
     //<Main />
-  // <AddVehicle/>
-    <AddDocumentation/>
+   //<MyTabs />
+//  <AddVehicle/>
+   // <AddDocumentation/>
    //<AddCondition/>
     //<AddOtherInfo/>
-    //<TripReport/>
+    <TripReport/>
     
   );
 }
