@@ -129,6 +129,14 @@ const TripReport = () => {
                     </View>
               </View>
 
+                {/* Remarks */}
+                <View className={styles.outerview}>
+                    <View className={styles.labelstyle}><Text className="text-black font-bold">Remarks</Text></View>
+                    <View className="w-4/6 items-center">
+                   
+                    </View>
+              </View>
+
               {/* Road Worthy */}
             <View className="  p-2 flex flex-row  bg-slate-100">             
               <View className=" bg-[#44cf56] border border-gray-300 p-3 w-2/4 rounded-md shadow-md  shadow-blue-900">

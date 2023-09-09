@@ -16,6 +16,7 @@ const AddOtherInfo = () => {
   const [fireext, setfireExt] = useState(false)
   const [firstaid, setfirstAid] = useState(false)
   const [zeroseat, setzeroSeat] = useState(false)
+  const [cones, setCones] = useState(false)
 
   
   //---------------------------------
@@ -155,7 +156,17 @@ const AddOtherInfo = () => {
 
               </View>
 
-            
+               {/* Safety Cones */}
+               <View className={styles.outerview}>
+              
+              <TouchableOpacity onPress={()=>cones==""?setCones('cones'):setCones("")}
+                 className={`p-2 flex-row gap-1 text-center items-center`}>
+                <Square stroke="black" className={`${cones == ""? "block":"hidden"}`} />
+                <CheckSquare stroke="black" className={`${cones == ""? "hidden":"block"}`}></CheckSquare>
+                <Text className="text-black font-bold">Cones</Text></TouchableOpacity>
+
+              </View>
+
              
               
 

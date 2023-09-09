@@ -71,8 +71,8 @@ const AddVehicle = () => {
 
 
   return (
-    // <ScrollView className=" ">
-      <View className=" flex flex-col  p-4 ">
+     <ScrollView className=" ">
+      <View className=" flex flex-col ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
 
           {/* Vehicle Information Design Tab */}
@@ -87,7 +87,7 @@ const AddVehicle = () => {
           {/*  Select vehcile Type */}
           <View className={`${styles.outerview} `} style={{}} >
             <View className={styles.labelstyle}><Text className="text-black  font-bold">Vehicle Type</Text></View>
-            <View className=" w-4/6  border p-2 items-center bg-slate-400 ">
+            <View className=" w-4/6 items-center ">
               <View className=" m-1  z-50">
               
               <DropDownPicker className=""
@@ -97,17 +97,17 @@ const AddVehicle = () => {
               setOpen={() => setProvinceOpen(!provinceOpen)}
               value={currentProvince}
               setValue={val => setCurrentProvince(val)}
-              placeholder="Issuing Authority"
+              placeholder="Vehicle Type"
               placeholderStyle={{ color: 'darkgray' }}
               dropDownContainerStyle={{
                 backgroundColor: "white",
                 position:'absolute',
-                zIndex:1000,
+                
               }}
 
               style={{
                 backgroundColor: 'white',
-                borderColor: 'blue',
+                borderColor: 'grey',
                 borderWidth: 1,
                 minHeight: 49,
                 
@@ -313,7 +313,7 @@ const AddVehicle = () => {
 
         </KeyboardAvoidingView>
       </View>
-    // </ScrollView>
+    </ScrollView>
   );
 };
 

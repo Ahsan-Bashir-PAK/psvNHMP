@@ -57,7 +57,7 @@ const AddDocumentation = () => {
 
   return (
      <ScrollView>
-      <View className="bg-slate-100  flex flex-col  border p-2 ">
+      <View className="bg-slate-100  flex flex-col  ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Vehicle Information Design Tab */}
           <View className=" mt-1 w-full  ">
@@ -133,8 +133,8 @@ const AddDocumentation = () => {
             {/* Route Type*/}
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route Type</Text></View>
-              <View className="w-4/6 items-center z- 25">
-              <View className=' w-2/4 '>
+              <View className="w-4/6 items-center ">
+              <View className='  '>
 
               <DropDownPicker
 
@@ -151,10 +151,10 @@ const AddDocumentation = () => {
 
                 style={{
                   backgroundColor: 'white',
-                  borderColor: 'blue',
+                  borderColor: 'grey',
                   borderWidth: 1,
                   position:'relative',
-                  zIndex: 5
+                  width:250 
 
 
 
@@ -318,5 +318,5 @@ const styles = {
   labelstyle:
     'text-center items-center justify-center w-2/6  border-r  border-slate-400  ',
   outerview:
-    'flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'
+    'flex flex-row  mx-2 border border-gray-300 P-1 mb-1 rounded-md bg-white shadow-md  shadow-blue-900'
 };

@@ -12,6 +12,7 @@ import AddDocumentation from '../screens/forms/addDocumentation';
 import AddCondition from '../screens/forms/addCondition';
 import AddOtherInfo from '../screens/forms/addOtherinfo';
 import TripReport from '../screens/forms/tripReport';
+import AddDrivernew from '../screens/forms/addDrivernew';
 
 
 
@@ -23,18 +24,16 @@ const MyTabs = () => {
   return (
     <NavigationContainer>
     <Tab.Navigator>
-      <Tab.Screen name="Add Driver" component={AddDriver} options={{
+      <Tab.Screen name="Add Driver" component={AddDrivernew} options={{
         
         tabBarIcon:()=>(
           <User  stroke="grey" size={35} fill='white'/>
         )
     }}
-    
-
+  
       />
         <Tab.Screen name="Add Vehicle"  component={AddVehicle} 
         options={{
-        
           tabBarIcon:()=>(
             <Bus  stroke="grey" size={35} fill='white' />
           )

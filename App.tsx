@@ -38,7 +38,7 @@ import AddDocumentation from './screens/forms/addDocumentation';
 import AddCondition from './screens/forms/addCondition';
 import AddOtherInfo from './screens/forms/addOtherinfo';
 import TripReport from './screens/forms/tripReport';
-
+import AddDriverenew from './screens/forms/addDrivernew'
 
 function App(): JSX.Element {
   
@@ -46,7 +46,7 @@ function App(): JSX.Element {
     
     //<MyStack />
     //<Main />
-   //<MyTabs />
+  // <MyTabs />
 //  <AddVehicle/>
    // <AddDocumentation/>
    //<AddCondition/>
