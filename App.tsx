@@ -39,6 +39,7 @@ import AddCondition from './screens/forms/addCondition';
 import AddOtherInfo from './screens/forms/addOtherinfo';
 import TripReport from './screens/forms/tripReport';
 import AddDriverenew from './screens/forms/addDrivernew'
+import TestPage from './screens/forms/testPage';
 
 function App(): JSX.Element {
   
@@ -51,7 +52,8 @@ function App(): JSX.Element {
    // <AddDocumentation/>
    //<AddCondition/>
     //<AddOtherInfo/>
-    <TripReport/>
+    //<TripReport/>
+    <TestPage/>
     
   );
 }
