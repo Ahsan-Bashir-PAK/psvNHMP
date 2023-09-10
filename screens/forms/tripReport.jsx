@@ -133,7 +133,12 @@ const TripReport = () => {
                 <View className={styles.outerview}>
                     <View className={styles.labelstyle}><Text className="text-black font-bold">Remarks</Text></View>
                     <View className="w-4/6 items-center">
-                   
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Remarks'
+                          maxLength={70}
+                          
+                          className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
                     </View>
               </View>
 
