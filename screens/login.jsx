@@ -17,6 +17,9 @@ function Login() {
     const [user, setUser] = useState("")
     const [userpwd, setPwd] = useState("")
     const navigation = useNavigation();
+    //-------------------------------------- get data of user
+
+    
     return (
         <View className='px-5 flex justify-start items-center h-screen  bg-gray-900 pt-10 '>
             <View className="w-full p-0 h-2/5 bg-blue-900 flex justify-center items-center ">
