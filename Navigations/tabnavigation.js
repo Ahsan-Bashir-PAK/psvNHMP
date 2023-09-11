@@ -23,7 +23,7 @@ const Tab =  createBottomTabNavigator();
 
 const MyTabs = () => {
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
     <Tab.Navigator>
       <Tab.Screen name="Add Driver" component={AddDrivernew} options={{
         
@@ -72,7 +72,7 @@ const MyTabs = () => {
 
 
       </Tab.Navigator>
-      </NavigationContainer>
+      // </NavigationContainer>
   );
 };
 

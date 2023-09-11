@@ -46,9 +46,9 @@ function App(): JSX.Element {
   
   return (
     
-   // <MyStack />
+    <MyStack />
     //<Main />
-   <MyTabs />
+   //<MyTabs />
 //  <AddVehicle/>
    // <AddDocumentation/>
    //<AddCondition/>

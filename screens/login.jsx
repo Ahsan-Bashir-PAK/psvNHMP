@@ -11,12 +11,19 @@ import {
     useColorScheme,
     View,
     Image,
+    Alert,
 } from 'react-native';
 
 function Login() {
     const [user, setUser] = useState("")
     const [userpwd, setPwd] = useState("")
     const navigation = useNavigation();
+
+function userLogin () {
+    if (user=="admin" && userpwd == "a") {
+        navigation.navigate('Home');
+    } else { console.log( user, userpwd , 'Please enter valid username & password');}
+}
     return (
         <View className='px-5 flex justify-start items-center h-screen  bg-gray-900 pt-10 '>
             <View className="w-full p-0 h-2/5 bg-blue-900 flex justify-center items-center ">
@@ -29,17 +36,17 @@ function Login() {
                 <TextInput
                     placeholder='User Name'
                     value={user}
-                    onChange={(e) => setUser(e.target.value)}
+                    onChangeText={text=>setUser(text)}
                     className=' p-2 border border-white text-black m-3 rounded-md w-10/12' />
 
                 <TextInput
                     secureTextEntry={true}
                     placeholder='password'
                     value={userpwd}
-                    onChange={(e) => setPwd(e.target.value)}
+                    onChangeText={e => setPwd(e)}
                     className=' p-2 border border-white text-white m-3 rounded-md w-10/12' />
 
-                <TouchableOpacity onPress={()=>navigation.navigate('Home')}
+                <TouchableOpacity onPress={()=>userLogin()}
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
                     <Text className='text-blue-500 text-center font-bold'>Login</Text>
 

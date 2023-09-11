@@ -21,6 +21,7 @@ import {
 
 
 function Home() {
+  const navigation = useNavigation();
   return (
     // <SafeAreaView>
     <View className="p-2 h-screen w-full bg-white">
@@ -85,7 +86,7 @@ function Home() {
       <View className=' bg-slate-100   rounded-lg h-[30%]  mt-0 p-4 '>
         {/*ADD PSV Button  */}
         <View className='flex-row justify-around'>
-          <TouchableOpacity className='shadow-md shadow-slate-950  w-2/5 flex-row  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
+          <TouchableOpacity  onPress = {()=>navigation.navigate('AddVehicle')} className='shadow-md shadow-slate-950  w-2/5 flex-row  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
             <View className="  items-center gap-1 justify-center mt-2 p-1 ">
               <BusFront stroke="orange" size={40} />
               <View className="flex justify-center items-center flex-row gap-1">
@@ -106,7 +107,7 @@ function Home() {
           </TouchableOpacity>
         </View>
         <View className=' flex-row justify-around mt-4'>
-          <TouchableOpacity onPress={() => navigation.navigate('Driver')} 
+          <TouchableOpacity onPress={() => navigation.navigate('AddVehicle')} 
           className='  w-2/5 flex-row shadow-md shadow-slate-950  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
             <View className="  items-center gap-1 justify-center mt-2 ">
               <User stroke="purple" size={40} />

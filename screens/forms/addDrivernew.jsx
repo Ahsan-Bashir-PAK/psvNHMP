@@ -8,15 +8,6 @@ import { Bus } from 'lucide-react-native';
 import SelectDropdown from 'react-native-select-dropdown'
 
 
-const provices = [
-  { label: 'NHMP', value: 'NHMP' },
-  { label: 'Punjab', value: 'punjab' },
-  { label: 'Sindh', value: 'sindh' },
-  { label: 'KPK', value: 'kpk' },
-  { label: 'Blochistan', value: 'Blochistan' },
-  { label: 'Islamabad', value: 'islamabad' },
-  { label: 'AJK', value: 'AJK' },
-];
 
 
 const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
@@ -24,10 +15,40 @@ const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
 const AddDrivernew = () => {
 
+// expiry Date
+  const [expirydate, setexpiryDate] = useState(new Date())
+  const [expiryopen, setexpiryOpen] = useState(false)
 
-     // DOB Date
-     const [dvrdate, setdvrDate] = useState(new Date())
-     const [dvropen, setdvrOpen] = useState(false)
+// Issue Date
+const [issuedate, setissueDate] = useState(new Date())
+const [issueopen, setissueOpen] = useState(false)
+
+// DOB
+const [dobdate, setdobDate] = useState(new Date())
+const [dobopen, setdobOpen] = useState(false)
+
+  const [provinceOpen, setProvinceOpen] = useState(false);
+  const [currentLiceince, setCurrentLiceince,] = useState(null);
+
+  const [tracker, setTracker] = useState(false);
+  const [emergencyExit, setEmergencyExit] = useState(false);
+  const [ac, setAc] = useState(false);
+
+  //------------------------------------select vehicle type 
+  //-------------------------------------------------------
+
+  //----------------------------------------
+  const [searchreg, setReg] = useState(null);
+  const [setyear, setYear] = useState(null);
+
+  const [acstate, setState] = useState(true);
+
+  const [LcOpen, setLcOpen] = useState(false);
+  const [currentProvince, setCurrentProvince] = useState(null)
+
+     // Fire Ext Date
+     const [fireextdate, setDate] = useState(new Date())
+     const [fireextopen, setOpen] = useState(false)
 
   function clearall() {
 
@@ -103,26 +124,26 @@ const AddDrivernew = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">D.O.B</Text></View>
             <View className="w-4/6 items-center ">
-            <View className="flex flex-row gap-1 items-center">
+            <View className="flex flex-row gap-1">
             
             <DatePicker
               modal
-              mode="dvrdate"
-              open={dvropen}
-              date={dvrdate}
+              mode="date"
+              open={dobopen}
+              date={dobdate}
               onConfirm={value => {
-                setdvrOpen(false);
-                setdvrDate(value);
+                setdobOpen(false);
+                setdobDate(value);
               }}
               onCancel={() => {
-                setdvrOpen(false);
+                setdobOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {dobdate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setdobOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -222,11 +243,10 @@ const AddDrivernew = () => {
                 onSelect={(selectedItem, index) => {
                   console.log(selectedItem, index)
                 }}
-                defaultButtonText='Select License Type'
-                 buttonStyle={{
+                defaultButtonText='Select License type'
+                buttonStyle={{
                   backgroundColor:'white',
-                                  }}
-                
+              }}
                 />
             </View>
           </View>
@@ -243,9 +263,8 @@ const AddDrivernew = () => {
                 
                 } 
                 defaultButtonText='Select Authority'
-                 buttonStyle={{
-                  backgroundColor:'white',
-                    
+                buttonStyle={{
+                    backgroundColor:'white',
                 }}
                 />
             </View>
@@ -257,24 +276,24 @@ const AddDrivernew = () => {
             <View className="w-4/6 items-center">
             <View className="flex flex-row gap-1">
             
-            {/* <DatePicker
+            <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={issueopen}
+              date={issuedate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setissueOpen(false);
+                setissueDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setissueOpen(false);
               }}
-            /> */}
+            />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {issuedate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setexpiryOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -290,21 +309,21 @@ const AddDrivernew = () => {
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={expiryopen}
+              date={expirydate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setexpiryOpen(false);
+                setexpiryDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setexpiryOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {expirydate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setexpiryOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
