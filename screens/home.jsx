@@ -19,9 +19,33 @@ import {
   ImageBackground,
 } from 'react-native';
 
+const search_psv = [
+{
+  "PSV": "BSA-2019-1515", 
+"seating_capacity":"45",
+"company":"Faisal Movers",
+"Route Permit":"15-09-2023",
+"fitness":"20-11-2023",
+"emergency exit":"yes"
+}];
+
+const [reg, setReg] = useState(null);
+const [year, setYear] = useState(null);
+const [number, setNumber] = useState(null);
 
 function Home() {
   const navigation = useNavigation();
+  
+  function searchPSV (){
+    const psv = reg + "-"+ year + "-"+ number;
+    console.log(psv);
+    console.log(searchPSV[0]);
+    
+    if ( psv == "") {
+        console.log(search_psv);
+  } else {}  
+}
+
   return (
     // <SafeAreaView>
     <View className="p-2 h-screen w-full bg-white">
@@ -36,6 +60,7 @@ function Home() {
             placeholder='ABC'
             maxLength={3}
             keyboardType='email-address'
+            onChangeText={text=>setReg(text)}
             className='border border-r-0 border-l-0 justify-center pl-4 bg-white border-black  rounded-md w-4/12  text-lg text-black' />
 
           <TextInput
@@ -43,16 +68,18 @@ function Home() {
             placeholder='Year'
             keyboardType='Numeric'
             maxLength={4}
+            onChangeText={text=>setYear(text)}
             className=' border border-r-0 border-l-0 bg-white border-black text-black  rounded-md w-4/12 text-lg' />
           <TextInput
             placeholderTextColor={'grey'}
             placeholder='[0000]'
             maxLength={4}
             keyboardType='Numeric'
+            onChangeText={text=>setNumber(text)}
             className='  border border-r-0 border-l-0 bg-white border-black text-black rounded-md w-4/12 text-lg' />
         </View>
         {/* View SearchBox Button */}
-        <View className=' flex-row p-1 justify-center  w-full '>
+        <View onPress={()=>searchPSV()} className=' flex-row p-1 justify-center  w-full '>
           <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
             <Text className=' text-center font-bold font-white  text-lg text-white'>Search PSV</Text>
@@ -73,7 +100,7 @@ function Home() {
         <View className=' flex-row p-1 justify-center  w-full '>
           <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
-            <Text className=' text-center font-bold font-white  text-lg text-white'>Search Driver's License</Text>
+            <Text className=' text-center font-bold font-white  text-lg text-white'>Search Driver's CNIC</Text>
           </TouchableOpacity>
         </View>
       </View>

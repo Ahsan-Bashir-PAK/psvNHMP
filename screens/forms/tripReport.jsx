@@ -31,11 +31,32 @@ const TripReport = () => {
             
         </View> 
 
+            {/*  Company NAme */}
+                  <View className={styles.outerview} >
+                    <View className={styles.labelstyle}><Text className="text-black  font-bold">Company Name</Text></View>
+                    <View className=" w-4/6  items-center">
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Company Name'
+                          maxLength={50}
+                    
+                          className=' border-black text-black rounded-md  text-lg text-center' />
+
+                        
+                    </View>
+              </View>
+
             {/*  Route Permit Date */}
             <View className={styles.outerview} >
                     <View className={styles.labelstyle}><Text className="text-black  font-bold">Route Permit</Text></View>
                     <View className=" w-4/6  items-center">
-                        
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Route Permit'
+                          maxLength={50}
+                    
+                          className=' border-black text-black rounded-md  text-lg text-center' />
+
                         
                     </View>
               </View>
@@ -62,7 +83,7 @@ const TripReport = () => {
                           placeholderTextColor={'grey'}
                           placeholder='Tyre Condition'
                           maxLength={50}
-                          className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                          className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
                         
                     </View>
               </View>
@@ -75,7 +96,7 @@ const TripReport = () => {
                           placeholder='Tracker Installed'
                           maxLength={50}
                           
-                          className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                          className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
                         
                     </View>
               </View>
@@ -85,10 +106,10 @@ const TripReport = () => {
                     <View className="w-4/6 items-center">
                         <TextInput
                           placeholderTextColor={'grey'}
-                          placeholder='Vehicle Color'
+                          placeholder='Emergency Exit (Y/N)'
                           maxLength={70}
                           
-                          className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                          className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
                         
                     </View>
               </View>
@@ -96,7 +117,13 @@ const TripReport = () => {
               <View className={styles.outerview}>
                     <View className={styles.labelstyle}><Text className="text-black font-bold">Fire Extinguihser</Text></View>
                     <View className="w-4/6 items-center">
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Yes / No'
+                          maxLength={50}
                     
+                          className=' border-black text-black rounded-md  text-lg' />
+
                  
                     </View>
               </View>
@@ -107,7 +134,7 @@ const TripReport = () => {
                     <View className="w-4/6 items-center">
                     <TextInput
                               placeholderTextColor={'grey'}
-                              placeholder='Seating Capacity'
+                              placeholder=' Yes / No'
                               maxLength={3}
                               className=' border-black text-black rounded-md  text-lg' />
                     </View>
@@ -117,7 +144,13 @@ const TripReport = () => {
                <View className={styles.outerview}>
                     <View className={styles.labelstyle}><Text className="text-black font-bold">Vehicle Trip Count(24 Hrs)</Text></View>
                     <View className="w-4/6 items-center">
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Count (24 Hrs) '
+                          maxLength={50}
                     
+                          className=' border-black text-black rounded-md  text-lg' />
+
                     </View>
               </View>
 
@@ -125,7 +158,13 @@ const TripReport = () => {
               <View className={styles.outerview}>
                     <View className={styles.labelstyle}><Text className="text-black font-bold">Seating Capacity</Text></View>
                     <View className="w-4/6 items-center">
-                   
+                    <TextInput
+                          placeholderTextColor={'grey'}
+                          placeholder='Seaating Capacity'
+                          maxLength={50}
+                    
+                          className=' border-black text-black rounded-md  text-lg' />
+
                     </View>
               </View>
 
@@ -138,7 +177,7 @@ const TripReport = () => {
                           placeholder='Remarks'
                           maxLength={70}
                           
-                          className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                          className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
                     </View>
               </View>
 
