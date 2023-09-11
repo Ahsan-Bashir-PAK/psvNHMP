@@ -5,6 +5,7 @@ import { BusFront, Scroll, User, FileText, Navigation,ArrowUpRightSquare, Calend
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
+import SelectDropdown from 'react-native-select-dropdown';
 
 
 
@@ -14,11 +15,7 @@ const provices = [
   { label: 'Permanent', value: 'Permanent' }
 ];
 
-const route_type = [
-  { label: 'Temporary', value: 'Temporary' },
-  { label: 'Permanent', value: 'Permanent' }
-
-];
+const route_type = ["Temporary", "Permanent"]
 
 
 const AddDocumentation = () => {
@@ -135,34 +132,21 @@ const AddDocumentation = () => {
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route Type</Text></View>
               <View className="w-4/6 items-center ">
-              <View className='  '>
-
-              <DropDownPicker
-
-                items={provices}
-                open={provinceOpen}
-                setOpen={() => setProvinceOpen(!provinceOpen)}
-                value={currentProvince}
-                setValue={val => setCurrentProvince(val)}
-                placeholder="Issuing Authority"
-                placeholderStyle={{ color: 'darkgray' }}
-                dropDownContainerStyle={{
-                  backgroundColor: "white"
+              <View className=" items-center">
+                
+              <SelectDropdown
+                className="bg-white border"
+                data= {route_type}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
                 }}
-
-                style={{
-                  backgroundColor: 'white',
-                  borderColor: 'grey',
-                  borderWidth: 1,
-                  position:'relative',
-                  width:250 
-
-
-
+                defaultButtonText='Select Route Type'
+                buttonStyle={{
+                  backgroundColor:'white',
+                    
                 }}
-              />
-
-            </View>
+                />
+                </View>
             </View>
             </View>
             {/* Route From */}
@@ -171,7 +155,7 @@ const AddDocumentation = () => {
               <View className="w-4/6 items-center">
               <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='from'
+                  placeholder='from [Lahore]'
                   maxLength={100}
                   className=' border-black text-black rounded-md  text-lg' />
               </View>
@@ -181,10 +165,10 @@ const AddDocumentation = () => {
             <View className={styles.outerview}>
               <View className={styles.labelstyle}><Text className="text-black font-bold">Route To</Text></View>
               <View className="w-4/6 items-center">
-                <TextInput
+              <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='To'
-                  maxLength={3}
+                  placeholder='To [Sargodha]'
+                  maxLength={100}
                   className=' border-black text-black rounded-md  text-lg' />
               </View>
             </View>
@@ -196,7 +180,7 @@ const AddDocumentation = () => {
               <View className="w-4/6 items-center">
                 <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='Route via'
+                  placeholder='Route via [M-2]'
                   maxLength={70}
 
                   className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />

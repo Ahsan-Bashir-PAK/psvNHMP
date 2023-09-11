@@ -3,9 +3,9 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVi
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Scroll, User, Square, CheckSquare, Search, Calendar } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import DropDownPicker from 'react-native-dropdown-picker';
+//import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
-
+import SelectDropdown from 'react-native-select-dropdown'
 
 
 const provices = [
@@ -19,51 +19,15 @@ const provices = [
 ];
 
 
-const Vehicletype = [
-  { label: 'Select Vehicle Type', value: '-' },
-  { label: 'BUS', value: 'NHMP' },
-  { label: 'VAN', value: 'VAN' },
-  { label: 'HIACE', value: 'HIACE' },
-  { label: 'HIROOF', value: 'HIROOF' },
-  { label: 'COASTER', value: 'COASTER' },
-  { label: 'APV', value: 'APV' },
-  { label: 'OTHER', value: 'OTHER' },
-];
-
-const company_name = [
-  { label: 'HTV', value: 'HTV' },
-  { label: 'LTV', value: 'LTV' },
-  { label: 'PSV', value: 'PSV' },
-  { label: 'HTV / PSV', value: 'HTV /PSV' },
-  { label: 'LTV / PSV', value: 'LTV /PSV' },
-  { label: 'Other', value: 'Others' },
-
-];
+const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
+const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
 const AddDrivernew = () => {
 
-  const [provinceOpen, setProvinceOpen] = useState(false);
-  const [currentLiceince, setCurrentLiceince,] = useState(null);
 
-  const [tracker, setTracker] = useState(false);
-  const [emergencyExit, setEmergencyExit] = useState(false);
-  const [ac, setAc] = useState(false);
-
-  //------------------------------------select vehicle type 
-  //-------------------------------------------------------
-
-  //----------------------------------------
-  const [searchreg, setReg] = useState(null);
-  const [setyear, setYear] = useState(null);
-
-  const [acstate, setState] = useState(true);
-
-  const [LcOpen, setLcOpen] = useState(false);
-  const [currentProvince, setCurrentProvince] = useState(null)
-
-     // Fire Ext Date
-     const [fireextdate, setDate] = useState(new Date())
-     const [fireextopen, setOpen] = useState(false)
+     // DOB Date
+     const [dvrdate, setdvrDate] = useState(new Date())
+     const [dvropen, setdvrOpen] = useState(false)
 
   function clearall() {
 
@@ -143,15 +107,15 @@ const AddDrivernew = () => {
             
             <DatePicker
               modal
-              mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              mode="dvrdate"
+              open={dvropen}
+              date={dvrdate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setdvrOpen(false);
+                setdvrDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setdvrOpen(false);
               }}
             />
 
@@ -253,11 +217,17 @@ const AddDrivernew = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">License Type</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='[LTV/ HTV/PSV]'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+            <SelectDropdown
+                data= {License_type}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
+                }}
+                defaultButtonText='Select License Type'
+                 buttonStyle={{
+                  backgroundColor:'white',
+                                  }}
+                
+                />
             </View>
           </View>
 
@@ -265,11 +235,19 @@ const AddDrivernew = () => {
            <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">Issuing Authority</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='[NHMP, Punjab etc]'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+              <SelectDropdown
+                data= {countries}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
+                }
+                
+                } 
+                defaultButtonText='Select Authority'
+                 buttonStyle={{
+                  backgroundColor:'white',
+                    
+                }}
+                />
             </View>
           </View>
 
@@ -279,7 +257,7 @@ const AddDrivernew = () => {
             <View className="w-4/6 items-center">
             <View className="flex flex-row gap-1">
             
-            <DatePicker
+            {/* <DatePicker
               modal
               mode="date"
               open={fireextopen}
@@ -291,7 +269,7 @@ const AddDrivernew = () => {
               onCancel={() => {
                 setOpen(false);
               }}
-            />
+            /> */}
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
               {fireextdate.toLocaleDateString()}

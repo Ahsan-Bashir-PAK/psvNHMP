@@ -40,12 +40,13 @@ import AddOtherInfo from './screens/forms/addOtherinfo';
 import TripReport from './screens/forms/tripReport';
 import AddDriverenew from './screens/forms/addDrivernew'
 import TestPage from './screens/forms/testPage';
+import SignUp from './screens/forms/signUp';
 
 function App(): JSX.Element {
   
   return (
     
-    //<MyStack />
+   // <MyStack />
     //<Main />
    <MyTabs />
 //  <AddVehicle/>
@@ -54,6 +55,7 @@ function App(): JSX.Element {
     //<AddOtherInfo/>
     //<TripReport/>
     //<TestPage/>
+   // <SignUp/>
     
   );
 }
