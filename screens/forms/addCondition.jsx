@@ -85,7 +85,7 @@ const AddCondition = () => {
 
 
   return (
-    <ScrollView className=" border">
+    <ScrollView className=" ">
       <View className="bg-slate-100  flex flex-col  border p-2 ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Vehicle Tyre Condition Tab */}
@@ -177,19 +177,7 @@ const AddCondition = () => {
               </View>
             </View>
 
-            {/* Next Checking Date */}
-            <View className={styles.outerview}>
-              <View className={styles.labelstyle}><Text className="text-black font-bold">Next Checking Date</Text></View>
-              <View className="w-4/6 items-center">
-                <TextInput
-                  placeholderTextColor={'grey'}
-                  placeholder='Route Type'
-                  maxLength={70}
-
-                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
-
-              </View>
-            </View>
+            
 
             {/* Tread Size */}
             <View className={styles.outerview}>

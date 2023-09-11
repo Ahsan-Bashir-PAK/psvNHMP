@@ -133,7 +133,7 @@ const AddDriver = () => {
             placeholder="Enter Father Name"
             className={styles.inputViolet}
           />
-          {/* ========================================== d.o.b ============ */}
+          {/* ================== d.o.b ============ */}
           <View className="flex flex-row ">
             <Text className="p-2 font-bold text-black">
               D.O.B
@@ -159,7 +159,7 @@ const AddDriver = () => {
               <Text className="p-2 text-md bg-[#29378a] rounded-md ml-1">📅</Text>
             </TouchableOpacity>
           </View>
-          {/* ====================================================== */}
+          
 
           <TextInput
             value={daddress}
@@ -176,13 +176,15 @@ const AddDriver = () => {
               value={dcell}
               onChange={(e) => dCell(e.target.value)}
               maxLength={11}
-              placeholderTextColor={'grey'} keyboardType='numeric' placeholder="Cell No." className={styles.inputVioletSmall} />
+              placeholderTextColor={'grey'} keyboardType='numeric' placeholder="Cell Number" className={styles.inputVioletSmall} />
+           
             {/* Disability */}
             <TextInput
               value={ddisability}
               onChange={(e) => dDisability(e.target.value)}
               placeholderTextColor={'grey'} placeholder="Disability( if any )" className={styles.inputVioletSmall} />
           </View>
+          
           {/*Company Name  */}
           <View className='flex flex-row m-1'>
             <TextInput

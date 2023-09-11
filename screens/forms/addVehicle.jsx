@@ -178,7 +178,7 @@ const AddVehicle = () => {
                 placeholderTextColor={'grey'}
                 placeholder='Engine Number'
                 maxLength={70}
-                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>
@@ -192,7 +192,7 @@ const AddVehicle = () => {
                 placeholder='HIGER-YUTONG-DAEWOO'
                 maxLength={100}
 
-                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>
@@ -206,7 +206,7 @@ const AddVehicle = () => {
                 placeholder='Vehicle Color'
                 maxLength={70}
 
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>

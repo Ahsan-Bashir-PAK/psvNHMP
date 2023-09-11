@@ -130,7 +130,7 @@ const AddDrivernew = () => {
                 placeholder='
                 Father Name'
                 maxLength={70}
-                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>
@@ -138,8 +138,8 @@ const AddDrivernew = () => {
           {/* DOB*/}
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">D.O.B</Text></View>
-            <View className="w-4/6 items-center">
-            <View className="flex flex-row gap-1">
+            <View className="w-4/6 items-center ">
+            <View className="flex flex-row gap-1 items-center">
             
             <DatePicker
               modal
@@ -174,7 +174,7 @@ const AddDrivernew = () => {
                 placeholder='Address'
                 maxLength={70}
 
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>
@@ -188,7 +188,7 @@ const AddDrivernew = () => {
                 placeholder='CNIC #'
                 maxLength={13}
 
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
 
             </View>
@@ -200,7 +200,7 @@ const AddDrivernew = () => {
             <View className="w-4/6 items-center">
               <TextInput
                 placeholderTextColor={'grey'}
-                placeholder='Seating Capacity'
+                placeholder='Cell Number'
                 keyboardType='numeric'
                 maxLength={11}
                 className=' border-black text-black rounded-md  text-lg' />
@@ -216,7 +216,7 @@ const AddDrivernew = () => {
                 placeholder='Enter Disiability'
                 maxLength={70}
 
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
             </View>
           </View>
@@ -230,7 +230,7 @@ const AddDrivernew = () => {
                 placeholder='Company Name'
                 maxLength={70}
 
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg tex text-center' />
 
             </View>
           </View>

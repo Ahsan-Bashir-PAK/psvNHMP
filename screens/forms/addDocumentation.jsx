@@ -199,7 +199,7 @@ const AddDocumentation = () => {
                   placeholder='Route via'
                   maxLength={70}
 
-                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg' />
+                  className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
               </View>
               </View>
