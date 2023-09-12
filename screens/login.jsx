@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import {encode as btoa} from 'base-64';
 import {
     SafeAreaView,
     ScrollView,
@@ -17,19 +18,18 @@ import {
 function Login() {
     const [user, setUser] = useState("")
     const [userpwd, setPwd] = useState("")
+    const [data, setData] = useState([]);
     const navigation = useNavigation();
 
     //-------------------------------------- get data of user
     useEffect(() => {
         const getUser = async () => {
           const response = await fetch(
-            `http://localhost:5000/users/getUser/${user}`,
+            
+            `http://192.168.10.19:5000/users/getUser/${user}`,
             {
               method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-               
-              },
+              
             }
           );
           const result = await response.json();
@@ -43,13 +43,14 @@ function Login() {
 
 
       //-----------login
-      const loginUser = async () => { 
+      const loginUser =  async() => { 
      
-       if(data[0]['UserPassword'], btoa(userpwd)){
-        ()=>navigation.navigate('Home')
+       if(data[0]['UserPassword'],userpwd){
+        navigation.navigate('Home')
+        
        }
        else{
-        Alert("user not connected")
+        Alert.alert("user not connected")
        }
           
         }

@@ -153,13 +153,13 @@ function Home() {
 
             placeholderTextColor={'grey'}
             autoCapitalize={'characters'}
-            placeholder='0000000000000'
+            placeholder='0000000000000 [CNIC without Dashes]'
             maxLength={13}
             keyboardType='Numeric'
             className='border justify-center pl-4 bg-white border-black m-1 rounded-md w-full  text-lg text-black' />
         </View>
         <View className=' flex-row p-1 justify-center  w-full '>
-          <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
+          <TouchableOpacity onPress={()=>searchPSV()} className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <BookCopy stroke="white" size={25} />
             <Text className=' text-center font-bold font-white  text-lg text-white'>Generate Inspection Report</Text>
           </TouchableOpacity>

@@ -3,18 +3,18 @@ import { Alert, View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvo
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Navigation, Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 import { Bus } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const navigation = useNavigation();
+
 
 const TripReport = () => {
  
-
+      const navigation = useNavigation();
   return (
   <ScrollView className=" ">
-    <View className="bg-slate-100  flex flex-col h-screen border p-2 justify-center">
+    <View className="bg-slate-100  flex flex-col h-full  p-2 ">
       <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
         {/* Vehicle Information Design Tab */}
         <View className=" mt-1 w-full  ">
@@ -240,5 +240,5 @@ const styles = {
     labelstyle:
     'text-center items-center justify-center w-2/6  border-r  border-slate-400  ',
      outerview:
-    'flex flex-row mb-1 mx-2 border border-gray-300 p-1 rounded-md bg-white shadow-md  shadow-blue-900'
+    'flex flex-row  mx-2 border border-gray-300  rounded-md bg-white shadow-md  shadow-blue-900'
 };
