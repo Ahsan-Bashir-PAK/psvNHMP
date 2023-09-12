@@ -7,12 +7,10 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
+const navigation = useNavigation();
 
 const TripReport = () => {
  
-      const navigation = useNavigation();
-
 
   return (
   <ScrollView className=" ">
