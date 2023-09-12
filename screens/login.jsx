@@ -21,15 +21,17 @@ function Login() {
 
 function userLogin () {
     if (user=="admin" && userpwd == "a") {
-        navigation.navigate('Home');
+        //Alert.alert("Please Enter Missing Fields");
+       //console.log("missss");
+         navigation.navigate('Home');
     } else { console.log( user, userpwd , 'Please enter valid username & password');}
 }
     return (
-        <View className='px-5 flex justify-center items-center h-screen  bg-gray-900 pt-2 '>
+        <View className='px-2 flex  items-center h-screen  bg-gray-900 pt-4 '>
             <View className="w-full p-0 h-3/6 bg-blue-900 flex justify-center items-center ">
-                <Image source={require('../img/logo.png')} className='w-[270] h-[300] border ' />
-                <Text className='font-extrabold text-3xl  text-white'>PSVs MIS</Text>
-                <Text className='font-extrabold sm:text-2xl text-lg text-yellow-500'>National Highways & Motorway Police</Text>
+                <Image source={require('../img/logo.png')}  style ={{width:200, height:200 }} className='w-[270] h-[300] border ' />
+                <Text className='font-extrabold  text-2xl text-white'>PSVs MIS</Text>
+                <Text className='font-extrabold  text-lg text-yellow-500'>National Highways & Motorway Police</Text>
             </View>
             <View className='w-full  flex justify-center items-center h-fit bg-slate-600 py-10 '>
                 {/* <Text className='text-white font-extrabold  text-lg text-left '>LOGIN HERE</Text> */}
@@ -37,18 +39,20 @@ function userLogin () {
                     placeholder='User Name'
                     value={user}
                     onChangeText={text=>setUser(text)}
+                    placeholderTextColor={'grey'}
                     className=' h-[50] p-2 border bg-slate-100 border-white text-black m-3 rounded-md w-10/12' />
 
                 <TextInput
                     secureTextEntry={true}
                     placeholder='Password'
                     value={userpwd}
+                    placeholderTextColor={'grey'}
                     onChangeText={e => setPwd(e)}
                     className='h-[50] p-2 border bg-slate-100 border-white text-black m-3 rounded-md w-10/12' />
 
                 <TouchableOpacity onPress={()=>userLogin()}
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
-                    <Text className='text-blue-500 text-center font-bold text-lg'>Login</Text>
+                    <Text  className='text-blue-500 text-center font-bold text-lg'>Login</Text>
 
                 </TouchableOpacity>
             </View>

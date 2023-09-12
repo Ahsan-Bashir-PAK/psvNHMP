@@ -6,7 +6,8 @@ import Home from '../screens/home';
 import Driver from '../screens/forms/addDrivernew';
 import AddVehicle from '../screens/forms/addVehicle';
 import MyTabs from './tabnavigation';
-
+import TripReport from '../screens/forms/tripReport';
+import AddDocumentation from '../screens/forms/addDocumentation';
 
 
 
@@ -21,8 +22,14 @@ const MyStack = () => {
           headerShown:false
         }}
         />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home}
+        options={{
+          headerShown:false
+        }}
+        />
         <Stack.Screen name="Driver" component={Driver} />
+        <Stack.Screen name="TripReport" component={TripReport} />
+        <Stack.Screen name="AddDocumentation" component={AddDocumentation} />
         <Stack.Screen name="AddVehicle" component={MyTabs} 
         options={{
           headerShown:false

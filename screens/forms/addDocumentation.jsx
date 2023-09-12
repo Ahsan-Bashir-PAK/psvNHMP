@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
+import { Alert, View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Scroll, User, FileText, Navigation,ArrowUpRightSquare, Calendar  } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -39,9 +39,12 @@ const AddDocumentation = () => {
 
    //---------------------------------
 
-   // Fire Ext Date
-   const [fireextdate, setDate] = useState(new Date())
-   const [fireextopen, setOpen] = useState(false)
+   // route expiry = Date
+   const [routedate, setrouteDate] = useState(new Date())
+   const [routeopen, setrouteOpen] = useState(false)
+   // fitnesa expiry Date
+   const [fitnessdate, setfitnessDate] = useState(new Date())
+   const [fitnessopen, setfitnessOpen] = useState(false)
   
 
   function clearall() {
@@ -104,21 +107,21 @@ const AddDocumentation = () => {
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={routeopen}
+              date={routedate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setrouteOpen(false);
+                setrouteDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setrouteOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {routedate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setrouteOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -227,21 +230,21 @@ const AddDocumentation = () => {
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={fitnessopen}
+              date={fitnessdate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setfitnessOpen(false);
+                setfitnessDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setfitnessOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {fitnessdate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setfitnessOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -264,7 +267,7 @@ const AddDocumentation = () => {
               {/* Buttons Save - Clear -Update */}
               <View className="flex-row items-center justify-center ">
                 <View className=" ">
-                  <TouchableOpacity className="bg-[#227935]  px-8 py-2 rounded-md m-2">
+                  <TouchableOpacity onPress={()=>Alert.alert("Data successfully Saved")} className="bg-[#227935]  px-8 py-2 rounded-md m-2">
                     <Text className="text-white  text-lg">Save</Text>
                   </TouchableOpacity>
                 </View>

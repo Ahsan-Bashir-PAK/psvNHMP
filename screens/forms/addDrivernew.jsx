@@ -293,7 +293,7 @@ const [dobopen, setdobOpen] = useState(false)
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
               {issuedate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => setexpiryOpen(true)}>
+            <TouchableOpacity onPress={() => setissueOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>

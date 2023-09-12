@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { UserPlus, Bus, Camera, UserCog, Pencil, BadgePlus, BusFront, Search, PenIcon, UserCog2, User, BookCopy, KeySquareIcon, LogOutIcon, AlignCenter } from 'lucide-react-native';
@@ -21,30 +22,45 @@ import {
 
 const search_psv = [
 {
+  "PSV": "BSA-2019-5351", 
+"seating_capacity":"45",
+"company":"Faisal Movers",
+"Route Permit":"15-09-2023",
+"fitness":"20-11-2023",
+"emergency exit":"yes"
+},
+{
   "PSV": "BSA-2019-1515", 
 "seating_capacity":"45",
 "company":"Faisal Movers",
 "Route Permit":"15-09-2023",
 "fitness":"20-11-2023",
 "emergency exit":"yes"
-}];
+},
 
-const [reg, setReg] = useState(null);
-const [year, setYear] = useState(null);
-const [number, setNumber] = useState(null);
+
+];
+
+
 
 function Home() {
   const navigation = useNavigation();
   
+  const [reg, setReg] = useState(null);
+  const [year, setYear] = useState(null);
+  const [number, setNumber] = useState(null);
+  
   function searchPSV (){
-    const psv = reg + "-"+ year + "-"+ number;
-    console.log(psv);
-    console.log(searchPSV[0]);
-    
-    if ( psv == "") {
-        console.log(search_psv);
-  } else {}  
-}
+  
+     const psv = reg + "-"+ year + "-"+ number;
+         if ( psv == search_psv[0].PSV) {
+             navigation.navigate('TripReport');
+       } else {
+         console.log(psv, search_psv[0].PSV);
+       }  
+    }
+      
+
 
   return (
     // <SafeAreaView>
@@ -79,8 +95,8 @@ function Home() {
             className='  border border-r-0 border-l-0 bg-white border-black text-black rounded-md w-4/12 text-lg' />
         </View>
         {/* View SearchBox Button */}
-        <View onPress={()=>searchPSV()} className=' flex-row p-1 justify-center  w-full '>
-          <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
+        <View  className=' flex-row p-1 justify-center  w-full '>
+          <TouchableOpacity onPress={()=>searchPSV()} className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
             <Text className=' text-center font-bold font-white  text-lg text-white'>Search PSV</Text>
           </TouchableOpacity>
@@ -184,7 +200,7 @@ function Home() {
       {/* Update Logout */}
 
       <View className='mt-2 ' >
-        <TouchableOpacity className='w-full   h-10 rounded-lg  justify-center items-center bg-[#a32d37] '>
+        <TouchableOpacity  onPress={()=>navigation.navigate('Login')} className='w-full   h-10 rounded-lg  justify-center items-center bg-[#a32d37] '>
           <View className="justify-center flex flex-row items-center  w-full gap-2">
             <LogOutIcon stroke="white" size={25} />
             <Text className=' font-bold font-white  text-lg text-white'>Logout</Text>
