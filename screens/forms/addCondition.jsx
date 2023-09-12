@@ -86,7 +86,7 @@ const AddCondition = () => {
 
   return (
     <ScrollView className=" ">
-      <View className="bg-slate-100  flex flex-col  border p-2 ">
+      <View className="bg-slate-100  flex flex-col   p-2 ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
           {/* Vehicle Tyre Condition Tab */}
           <View className=" mt-1 w-full  ">
@@ -106,7 +106,7 @@ const AddCondition = () => {
               <View className=" w-4/6  items-center">
                 <TextInput
                   placeholderTextColor={'grey'}
-                  placeholder='Company Manufacture'
+                  placeholder='Enter Company'
                   maxLength={50}
 
                   className=' border-black text-black rounded-md  text-lg' />

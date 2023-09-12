@@ -3,44 +3,29 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVi
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Scroll, User, Square, CheckSquare, Search, Calendar } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import DropDownPicker from 'react-native-dropdown-picker';
+//import DropDownPicker from 'react-native-dropdown-picker';
 import { Bus } from 'lucide-react-native';
+import SelectDropdown from 'react-native-select-dropdown'
 
 
 
-const provices = [
-  { label: 'NHMP', value: 'NHMP' },
-  { label: 'Punjab', value: 'punjab' },
-  { label: 'Sindh', value: 'sindh' },
-  { label: 'KPK', value: 'kpk' },
-  { label: 'Blochistan', value: 'Blochistan' },
-  { label: 'Islamabad', value: 'islamabad' },
-  { label: 'AJK', value: 'AJK' },
-];
 
-
-const Vehicletype = [
-  { label: 'Select Vehicle Type', value: '-' },
-  { label: 'BUS', value: 'NHMP' },
-  { label: 'VAN', value: 'VAN' },
-  { label: 'HIACE', value: 'HIACE' },
-  { label: 'HIROOF', value: 'HIROOF' },
-  { label: 'COASTER', value: 'COASTER' },
-  { label: 'APV', value: 'APV' },
-  { label: 'OTHER', value: 'OTHER' },
-];
-
-const company_name = [
-  { label: 'HTV', value: 'HTV' },
-  { label: 'LTV', value: 'LTV' },
-  { label: 'PSV', value: 'PSV' },
-  { label: 'HTV / PSV', value: 'HTV /PSV' },
-  { label: 'LTV / PSV', value: 'LTV /PSV' },
-  { label: 'Other', value: 'Others' },
-
-];
+const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
+const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
 const AddDrivernew = () => {
+
+// expiry Date
+  const [expirydate, setexpiryDate] = useState(new Date())
+  const [expiryopen, setexpiryOpen] = useState(false)
+
+// Issue Date
+const [issuedate, setissueDate] = useState(new Date())
+const [issueopen, setissueOpen] = useState(false)
+
+// DOB
+const [dobdate, setdobDate] = useState(new Date())
+const [dobopen, setdobOpen] = useState(false)
 
   const [provinceOpen, setProvinceOpen] = useState(false);
   const [currentLiceince, setCurrentLiceince,] = useState(null);
@@ -139,26 +124,26 @@ const AddDrivernew = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">D.O.B</Text></View>
             <View className="w-4/6 items-center ">
-            <View className="flex flex-row gap-1 items-center">
+            <View className="flex flex-row gap-1">
             
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={dobopen}
+              date={dobdate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setdobOpen(false);
+                setdobDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setdobOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {dobdate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setdobOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -253,11 +238,16 @@ const AddDrivernew = () => {
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">License Type</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='[LTV/ HTV/PSV]'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+            <SelectDropdown
+                data= {License_type}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
+                }}
+                defaultButtonText='Select License type'
+                buttonStyle={{
+                  backgroundColor:'white',
+              }}
+                />
             </View>
           </View>
 
@@ -265,11 +255,18 @@ const AddDrivernew = () => {
            <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">Issuing Authority</Text></View>
             <View className="w-4/6 items-center">
-              <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='[NHMP, Punjab etc]'
-                maxLength={30}
-                className=' border-black text-black rounded-md  text-lg' />
+              <SelectDropdown
+                data= {countries}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
+                }
+                
+                } 
+                defaultButtonText='Select Authority'
+                buttonStyle={{
+                    backgroundColor:'white',
+                }}
+                />
             </View>
           </View>
 
@@ -282,21 +279,21 @@ const AddDrivernew = () => {
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={issueopen}
+              date={issuedate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setissueOpen(false);
+                setissueDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setissueOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {issuedate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setissueOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>
@@ -312,21 +309,21 @@ const AddDrivernew = () => {
             <DatePicker
               modal
               mode="date"
-              open={fireextopen}
-              date={fireextdate}
+              open={expiryopen}
+              date={expirydate}
               onConfirm={value => {
-                setOpen(false);
-                setDate(value);
+                setexpiryOpen(false);
+                setexpiryDate(value);
               }}
               onCancel={() => {
-                setOpen(false);
+                setexpiryOpen(false);
               }}
             />
 
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
-              {fireextdate.toLocaleDateString()}
+              {expirydate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setexpiryOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>

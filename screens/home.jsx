@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { UserPlus, Bus, Camera, UserCog, Pencil, BadgePlus, BusFront, Search, PenIcon, UserCog2, User, BookCopy, KeySquareIcon, LogOutIcon, AlignCenter } from 'lucide-react-native';
+
 
 
 import {
@@ -18,8 +20,48 @@ import {
   ImageBackground,
 } from 'react-native';
 
+const search_psv = [
+{
+  "PSV": "BSA-2019-5351", 
+"seating_capacity":"45",
+"company":"Faisal Movers",
+"Route Permit":"15-09-2023",
+"fitness":"20-11-2023",
+"emergency exit":"yes"
+},
+{
+  "PSV": "BSA-2019-1515", 
+"seating_capacity":"45",
+"company":"Faisal Movers",
+"Route Permit":"15-09-2023",
+"fitness":"20-11-2023",
+"emergency exit":"yes"
+},
+
+
+];
+
+
 
 function Home() {
+  const navigation = useNavigation();
+  
+  const [reg, setReg] = useState(null);
+  const [year, setYear] = useState(null);
+  const [number, setNumber] = useState(null);
+  
+  function searchPSV (){
+  
+     const psv = reg + "-"+ year + "-"+ number;
+         if ( psv == search_psv[0].PSV) {
+             navigation.navigate('TripReport');
+       } else {
+         console.log(psv, search_psv[0].PSV);
+       }  
+    }
+      
+
+
   return (
     // <SafeAreaView>
     <View className="p-2 h-screen w-full bg-white">
@@ -34,6 +76,7 @@ function Home() {
             placeholder='ABC'
             maxLength={3}
             keyboardType='email-address'
+            onChangeText={text=>setReg(text)}
             className='border border-r-0 border-l-0 justify-center pl-4 bg-white border-black  rounded-md w-4/12  text-lg text-black' />
 
           <TextInput
@@ -41,17 +84,19 @@ function Home() {
             placeholder='Year'
             keyboardType='Numeric'
             maxLength={4}
+            onChangeText={text=>setYear(text)}
             className=' border border-r-0 border-l-0 bg-white border-black text-black  rounded-md w-4/12 text-lg' />
           <TextInput
             placeholderTextColor={'grey'}
             placeholder='[0000]'
             maxLength={4}
             keyboardType='Numeric'
+            onChangeText={text=>setNumber(text)}
             className='  border border-r-0 border-l-0 bg-white border-black text-black rounded-md w-4/12 text-lg' />
         </View>
         {/* View SearchBox Button */}
-        <View className=' flex-row p-1 justify-center  w-full '>
-          <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
+        <View  className=' flex-row p-1 justify-center  w-full '>
+          <TouchableOpacity onPress={()=>searchPSV()} className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
             <Text className=' text-center font-bold font-white  text-lg text-white'>Search PSV</Text>
           </TouchableOpacity>
@@ -71,7 +116,7 @@ function Home() {
         <View className=' flex-row p-1 justify-center  w-full '>
           <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
-            <Text className=' text-center font-bold font-white  text-lg text-white'>Search Driver's License</Text>
+            <Text className=' text-center font-bold font-white  text-lg text-white'>Search Driver's CNIC</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -84,7 +129,7 @@ function Home() {
       <View className=' bg-slate-100   rounded-lg h-[30%]  mt-0 p-4 '>
         {/*ADD PSV Button  */}
         <View className='flex-row justify-around'>
-          <TouchableOpacity className='shadow-md shadow-slate-950  w-2/5 flex-row  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
+          <TouchableOpacity  onPress = {()=>navigation.navigate('AddVehicle')} className='shadow-md shadow-slate-950  w-2/5 flex-row  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
             <View className="  items-center gap-1 justify-center mt-2 p-1 ">
               <BusFront stroke="orange" size={40} />
               <View className="flex justify-center items-center flex-row gap-1">
@@ -105,7 +150,7 @@ function Home() {
           </TouchableOpacity>
         </View>
         <View className=' flex-row justify-around mt-4'>
-          <TouchableOpacity onPress={() => navigation.navigate('Driver')} 
+          <TouchableOpacity onPress={() => navigation.navigate('AddVehicle')} 
           className='  w-2/5 flex-row shadow-md shadow-slate-950  rounded-lg  flex justify-around items-center border border-slate-400  bg-white'>
             <View className="  items-center gap-1 justify-center mt-2 ">
               <User stroke="purple" size={40} />
@@ -155,7 +200,7 @@ function Home() {
       {/* Update Logout */}
 
       <View className='mt-2 ' >
-        <TouchableOpacity className='w-full   h-10 rounded-lg  justify-center items-center bg-[#a32d37] '>
+        <TouchableOpacity  onPress={()=>navigation.navigate('Login')} className='w-full   h-10 rounded-lg  justify-center items-center bg-[#a32d37] '>
           <View className="justify-center flex flex-row items-center  w-full gap-2">
             <LogOutIcon stroke="white" size={25} />
             <Text className=' font-bold font-white  text-lg text-white'>Logout</Text>

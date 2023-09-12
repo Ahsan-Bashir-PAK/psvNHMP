@@ -120,7 +120,7 @@ const AddOtherInfo = () => {
             <Text className="rounded-md  w-4/6   text-black text-center font-bold p-2">
               {fireextdate.toLocaleDateString()}
             </Text>
-            <TouchableOpacity onPress={() => settyreOpen(true)}>
+            <TouchableOpacity onPress={() => setOpen(true)}>
               <Calendar stroke="black" fill="white" size={30}></Calendar>
             </TouchableOpacity>
           </View>

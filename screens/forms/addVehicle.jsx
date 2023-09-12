@@ -3,42 +3,17 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVi
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Scroll, User, Square, CheckSquare } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 import { Bus } from 'lucide-react-native';
+import SelectDropdown from 'react-native-select-dropdown';
 
 
 
-const provices = [
-  { label: 'NHMP', value: 'NHMP' },
-  { label: 'Punjab', value: 'punjab' },
-  { label: 'Sindh', value: 'sindh' },
-  { label: 'KPK', value: 'kpk' },
-  { label: 'Blochistan', value: 'Blochistan' },
-  { label: 'Islamabad', value: 'islamabad' },
-  { label: 'AJK', value: 'AJK' },
-];
+
+const Vehicletype = [ "BUS" ,"HIACE", "HIROOF", "COASTER", "APV", "OTHER"];  
+  
 
 
-const Vehicletype = [
-  { label: 'Select Vehicle Type', value: '-' },
-  { label: 'BUS', value: 'NHMP' },
-  { label: 'VAN', value: 'VAN' },
-  { label: 'HIACE', value: 'HIACE' },
-  { label: 'HIROOF', value: 'HIROOF' },
-  { label: 'COASTER', value: 'COASTER' },
-  { label: 'APV', value: 'APV' },
-  { label: 'OTHER', value: 'OTHER' },
-];
-
-const company_name = [
-  { label: 'HTV', value: 'HTV' },
-  { label: 'LTV', value: 'LTV' },
-  { label: 'PSV', value: 'PSV' },
-  { label: 'HTV / PSV', value: 'HTV /PSV' },
-  { label: 'LTV / PSV', value: 'LTV /PSV' },
-  { label: 'Other', value: 'Others' },
-
-];
 
 const AddVehicle = () => {
 
@@ -89,32 +64,18 @@ const AddVehicle = () => {
             <View className={styles.labelstyle}><Text className="text-black  font-bold">Vehicle Type</Text></View>
             <View className=" w-4/6 items-center ">
               <View className=" m-1  z-50">
+              <SelectDropdown
+                data= {Vehicletype}
+                onSelect={(selectedItem, index) => {
+                  console.log(selectedItem, index)
+                }}
+                defaultButtonText='Select Vehicle'
+                buttonStyle={{
+                  backgroundColor:'white',
+                    
+                }}                
+                />
               
-              <DropDownPicker className=""
-
-              items={provices}
-              open={provinceOpen}
-              setOpen={() => setProvinceOpen(!provinceOpen)}
-              value={currentProvince}
-              setValue={val => setCurrentProvince(val)}
-              placeholder="Vehicle Type"
-              placeholderStyle={{ color: 'darkgray' }}
-              dropDownContainerStyle={{
-                backgroundColor: "white",
-                position:'absolute',
-                
-              }}
-
-              style={{
-                backgroundColor: 'white',
-                borderColor: 'grey',
-                borderWidth: 1,
-                minHeight: 49,
-                
-
-
-              }}
-              />
             </View>
             </View>
           </View>
@@ -219,7 +180,7 @@ const AddVehicle = () => {
                  className={`p-2 flex-row gap-1 text-center items-center`}>
                 <Square stroke="black" className={`${ac == ""? "block":"hidden"}`} />
                 <CheckSquare stroke="black" className={`${ac == ""? "hidden":"block"}`}></CheckSquare>
-                <Text className="text-black font-bold">{ac=="" ?"Non-AC":" AC"}</Text></TouchableOpacity>
+                <Text className="text-black font-bold">{ac=="" ?"AC":" AC (Yes)"}</Text></TouchableOpacity>
 
             </View>
           </View>
@@ -232,7 +193,7 @@ const AddVehicle = () => {
                 placeholderTextColor={'grey'}
                 placeholder='Seating Capacity'
                 keyboardType='numeric'
-                maxLength={3}
+                maxLength={2}
                 className=' border-black text-black rounded-md  text-lg' />
             </View>
           </View>
@@ -245,7 +206,7 @@ const AddVehicle = () => {
                  className={`p-2 flex-row gap-1 text-center items-center`}>
                 <Square stroke="black" className={`${tracker == ""? "block":"hidden"}`} />
                 <CheckSquare stroke="black" className={`${tracker == ""? "hidden":"block"}`}></CheckSquare>
-                <Text className="text-black font-bold">{tracker=="" ?"Not Installed":" Tracker Installed"}</Text></TouchableOpacity>
+                <Text className="text-black font-bold">{tracker=="" ?"Installed":" Tracker Installed"}</Text></TouchableOpacity>
             </View>
           </View>
 
@@ -257,7 +218,7 @@ const AddVehicle = () => {
                  className={`p-2 flex-row gap-1 text-center items-center`}>
                 <Square stroke="black" className={`${emergencyExit == ""? "block":"hidden"}`} />
                 <CheckSquare stroke="black" className={`${emergencyExit == ""? "hidden":"block"}`}></CheckSquare>
-                <Text className="text-black font-bold">{emergencyExit=="" ?"Not Installed":"Exit Gate Installed"}</Text></TouchableOpacity>
+                <Text className="text-black font-bold">{emergencyExit=="" ?"Installed":"Exit Gate Installed"}</Text></TouchableOpacity>
             </View>
           </View>
 

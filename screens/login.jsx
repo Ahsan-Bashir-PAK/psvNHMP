@@ -18,6 +18,7 @@ function Login() {
     const [user, setUser] = useState("")
     const [userpwd, setPwd] = useState("")
     const navigation = useNavigation();
+
     //-------------------------------------- get data of user
     useEffect(() => {
         const getUser = async () => {
@@ -44,7 +45,7 @@ function Login() {
       //-----------login
       const loginUser = async () => { 
      
-       if(data[0]['UserPassword'], btoa(pwd)){
+       if(data[0]['UserPassword'], btoa(userpwd)){
         ()=>navigation.navigate('Home')
        }
        else{
@@ -57,39 +58,45 @@ function Login() {
     
 
     
+
     return (
-        <View className='px-5 flex justify-start items-center h-screen  bg-gray-900 pt-10 '>
-            <View className="w-full p-0 h-2/5 bg-blue-900 flex justify-center items-center ">
-                <Image source={require('../img/logo.png')} className='w-2/5 h-2/4' />
-                <Text className='font-extrabold text-2xl  text-white'>PSVs MIS</Text>
-                <Text className='font-extrabold text-1xl text-yellow-500'>National Highways & Motorway Police</Text>
+        <View className='px-2 flex  items-center h-screen  bg-gray-900 pt-4 '>
+            <View className="w-full p-0 h-3/6 bg-blue-900 flex justify-center items-center ">
+                <Image source={require('../img/logo.png')}  style ={{width:200, height:200 }} className='w-[270] h-[300] border ' />
+                <Text className='font-extrabold  text-2xl text-white'>PSVs MIS</Text>
+                <Text className='font-extrabold  text-lg text-yellow-500'>National Highways & Motorway Police</Text>
             </View>
             <View className='w-full  flex justify-center items-center h-fit bg-slate-600 py-10 '>
-                <Text className='text-white font-extrabold  text-left'>LOGIN </Text>
+                {/* <Text className='text-white font-extrabold  text-lg text-left '>LOGIN HERE</Text> */}
                 <TextInput
                     placeholder='User Name'
                     value={user}
-                    onChange={(e) => setUser(e.target.value)}
-                    className=' p-2 border border-white text-black m-3 rounded-md w-10/12' />
+                    onChangeText={text=>setUser(text)}
+                    placeholderTextColor={'grey'}
+                    className=' h-[50] p-2 border bg-slate-100 border-white text-black m-3 rounded-md w-10/12' />
 
                 <TextInput
                     secureTextEntry={true}
-                    placeholder='password'
+                    placeholder='Password'
                     value={userpwd}
-                    onChange={(e) => setPwd(e.target.value)}
-                    className=' p-2 border border-white text-white m-3 rounded-md w-10/12' />
+                    placeholderTextColor={'grey'}
+                    onChangeText={e => setPwd(e)}
+                    className='h-[50] p-2 border bg-slate-100 border-white text-black m-3 rounded-md w-10/12' />
+
 
                 <TouchableOpacity onPress={  
                 ()=>loginUser()
                 }
+                
+
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
-                    <Text className='text-blue-500 text-center font-bold'>Login</Text>
+                    <Text  className='text-blue-500 text-center font-bold text-lg'>Login</Text>
 
                 </TouchableOpacity>
             </View>
-            <View className='text-white p-2 w-full flex justify-center  items-center bg-slate-500 border-y  border-yellow-500'>
-                <Text>Copyrights reserved by</Text>
-                <Text>NHMP Training  College, IT Wing</Text>
+            <View className='text-white p-2 w-full flex justify-center  items-center bg-slate-500 border-y  border-yellow-300'>
+                <Text className="text-white">Copyrights reserved by</Text>
+                <Text className="text-white">NHMP Training  College, IT Wing</Text>
             </View>
         </View>
 

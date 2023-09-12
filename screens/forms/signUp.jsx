@@ -9,63 +9,199 @@ import DocumentPicker from 'react-native-document-picker';
 
 
 
-const TestPage = () => {
+const SignUp = () => {
  
-      const selectDocument = async ()=> {
-            try {
-            const doc = await DocumentPicker.pick({
-                  type:[DocumentPicker.types.images, DocumentPicker.types.pdf],
-                  allowMultiSelection:false
-                  
-            });
-            console.log(doc);
-
-            } catch (err) {
-                  
-            }      
-      }
-
-
 
   return (
-  <ScrollView className=" border">
-    <View className="bg-slate-100  flex flex-col h-screen border p-2 justify-center">
+    <ScrollView className=" ">
+    <View className=" flex flex-col   ">
       <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
-        {/* Vehicle Information Design Tab */}
-        <View className=" mt-1 w-full  ">
-          
-         <View className=" bg-yellow-400  rounded-md p-1  w-fit items-center justify-center flex-row-reverse ">
-            <Text className="text-black text-lg rounded-md font-bold ">Vehicle Trip Report </Text>
-            <BusFront stroke="black" size={40}></BusFront>
+
+        {/* Sing Up page */}
+        <View className="  mt-1 w-full  ">
+
+          <View className=" bg-yellow-400  rounded-md p-1 m-1 w-fit items-center justify-center flex-row-reverse ">
+            <Text className="text-black text-lg rounded-md font-bold ">User SignUp</Text>
+            <User stroke="black" size={30}></User>
+          </View>
         </View>
 
-            <View className="border h-40 bg-slate-200">
-                        
+        {/*  FIND */}
+        <View className={`${styles.outerview} `} style={{}} >
+          
+          <View className=" w-4/6  border border-gray-200 items-center ">
+              <TextInput 
+              placeholderTextColor={'grey'}
+              placeholder='Search User CNIC'
+              maxLength={13}
+              keyboardType='numeric'
+
+              className=' text-black rounded-md  text-lg' />
+              
+          </View>
+          <View className="flex flex-row-reverse  bg-orange-2200  justify-center items-center w-2/6"><Text className="text-black text-lg  font-bold">Search</Text>
+          
+          {/* <Search stroke='black' /> */}
+          </View>
+        </View>
+        
+        {/*   Name */}
+        <View className={styles.outerview} >
+          <View className={styles.labelstyle}><Text className="text-black  font-bold">User Name</Text></View>
+          <View className=" w-4/6  items-center">
+            <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='User Name'
+              maxLength={60}
+
+              className=' border-black text-black rounded-md  text-lg' />
+
+          </View>
+        </View>
+
+        {/* Password */}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">User Password</Text></View>
+          <View className="w-4/6 items-center">
+            <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Password'
+              maxLength={70}
+              secureTextEntry={true}
+              className='   w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
+
+          </View>
+        </View>
+
+        {/* Designation*/}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Designation</Text></View>
+          <View className="w-4/6 items-center ">
+          <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='User Name'
+              maxLength={60}
+
+              className=' border-black text-black rounded-md  text-lg' />
+
+          </View>
+        </View>
+
+        {/* Belt No. */}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Belt No.</Text></View>
+          <View className="w-4/6 items-center">
+            <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Belt No'
+              maxLength={10}
+
+              className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
+
+          </View>
+        </View>
+
+        {/* Zone */}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Zone</Text></View>
+          <View className="w-4/6 items-center">
+          <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Zone'
+              maxLength={20}
+
+              className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
+
+
+          </View>
+        </View>
+
+        {/* Beat */}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Beat</Text></View>
+          <View className="w-4/6 items-center">
+            <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Beat'
+              keyboardType='numeric'
+              maxLength={11}
+              className=' border-black text-black rounded-md  text-lg' />
+          </View>
+        </View>
+
+        {/* Status */}
+        <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Status</Text></View>
+          <View className="w-4/6 items-center">
+          <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Enter Disiability'
+              maxLength={70}
+
+              className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
+
+          </View>
+        </View>
+
+         {/* Role */}
+         <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Role</Text></View>
+          <View className="w-4/6 items-center">
+          <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Company Name'
+              maxLength={70}
+
+              className='  w-8/12 bg-white border-black text-black rounded-md  text-lg tex text-center' />
+
+          </View>
+        </View>
+
+         {/* Web Access */}
+         <View className={styles.outerview}>
+          <View className={styles.labelstyle}><Text className="text-black font-bold">Web Access</Text></View>
+          <View className="w-4/6 items-center">
+            <TextInput
+              placeholderTextColor={'grey'}
+              placeholder='Web Access'
+              maxLength={4}
+              minLength={2}
+              keyboardType='numeric'
+              className=' border-black text-black rounded-md  text-lg' />
+          </View>
+        </View>
+
+         {/* Buttons Save - Clear -Update */}
+         <View className="flex-row items-center justify-center ">
+              <View className=" ">
+                <TouchableOpacity className="bg-[#227935]  px-8 py-2 rounded-md m-2">
+                  <Text className="text-white  text-lg">Save</Text>
+                </TouchableOpacity>
+              </View>
+
+
+              <View className="">
+                <TouchableOpacity className="bg-[#29378a] px-7 py-2 rounded-md m-2">
+                  <Text className="text-white  text-lg">Update</Text>
+                </TouchableOpacity>
+              </View>
+              <View className="">
+                <TouchableOpacity className="bg-[#a54932] px-8 py-2 rounded-md m-2">
+                  <Text className="text-white text-lg">Clear</Text>
+                </TouchableOpacity>
+              </View>
+
+
             </View>
 
-
-            {/* Buttons Save - Clear -Update */}
-            <View className="flex-row items-center justify-center  w-fit">
-                    <View className="  justify center items-center w-full  ">
-                      <TouchableOpacity  onPress={()=>selectDocument()} className="bg-[#227935] items-center  w-full rounded-md m-2 p-1">
-                        <Text className="text-white  text-lg">Save</Text>
-                      </TouchableOpacity>
-                      </View>
-
-                      
-                    
-              </View>
-        </View>
-       
-          
 
       </KeyboardAvoidingView>
     </View>
   </ScrollView>
-);
+  );
 };
 
-export default TestPage;
+export default SignUp;
 
 const styles = {
   inputViolet:
