@@ -11,6 +11,7 @@ import {
     useColorScheme,
     View,
     Image,
+    Alert,
 } from 'react-native';
 
 function Login() {
@@ -18,6 +19,42 @@ function Login() {
     const [userpwd, setPwd] = useState("")
     const navigation = useNavigation();
     //-------------------------------------- get data of user
+    useEffect(() => {
+        const getUser = async () => {
+          const response = await fetch(
+            `http://localhost:5000/users/getUser/${user}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+               
+              },
+            }
+          );
+          const result = await response.json();
+          setData(result);
+          
+        };
+        getUser();
+      
+       
+      },[data,user]);
+
+
+      //-----------login
+      const loginUser = async () => { 
+     
+       if(data[0]['UserPassword'], btoa(pwd)){
+        ()=>navigation.navigate('Home')
+       }
+       else{
+        Alert("not connected")
+       }
+          
+        }
+     
+      
+    
 
     
     return (
@@ -42,7 +79,9 @@ function Login() {
                     onChange={(e) => setPwd(e.target.value)}
                     className=' p-2 border border-white text-white m-3 rounded-md w-10/12' />
 
-                <TouchableOpacity onPress={()=>navigation.navigate('Home')}
+                <TouchableOpacity onPress={  
+                ()=>loginUser()
+                }
                     className='p-3 bg-slate-200 text-center rounded-md w-6/12 mt-10' >
                     <Text className='text-blue-500 text-center font-bold'>Login</Text>
 
