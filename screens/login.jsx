@@ -49,15 +49,11 @@ function Login() {
         ()=>navigation.navigate('Home')
        }
        else{
-        Alert("not connected")
+        Alert("user not connected")
        }
           
         }
-     
-      
-    
-
-    
+  
 
     return (
         <View className='px-2 flex  items-center h-screen  bg-gray-900 pt-4 '>
