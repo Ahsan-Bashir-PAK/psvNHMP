@@ -26,7 +26,7 @@ function Login() {
         const getUser = async () => {
           const response = await fetch(
             
-            `http://192.168.10.19:5000/users/getUser/${user}`,
+            `http://192.168.10.39:5000/users/getUser/${user}`,
             {
               method: "GET",
               

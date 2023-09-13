@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, TouchableHighlight } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 import DatePicker from 'react-native-date-picker';
 import { Scroll, User } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
