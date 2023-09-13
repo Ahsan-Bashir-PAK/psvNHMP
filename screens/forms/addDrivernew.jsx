@@ -14,6 +14,7 @@ import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
 const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
+const url = process.env.BASE_URL
 const AddDrivernew = () => {
 
 // expiry Date
@@ -51,11 +52,15 @@ const [dobopen, setdobOpen] = useState(false)
      const [fireextdate, setDate] = useState(new Date())
      const [fireextopen, setOpen] = useState(false)
 
-     const [fileData, setFileData] = useState(null);
-     const [fileUri, setFileUri] = useState(null);
-     
- 
-     
+  function clearall() {
+
+    setReg('')
+    setYear('')
+
+  }
+
+
+
   return (
 
   
@@ -94,7 +99,9 @@ const [dobopen, setdobOpen] = useState(false)
                 placeholderTextColor={'grey'}
                 placeholder='CNIC #'
                 maxLength={13}
-
+                value ={cnic}
+                onChangeText={txt=>setCnic(txt)}
+                onBlur={()=>checkDvr}
                 className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
 
