@@ -13,6 +13,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
 const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
+const url = process.env.BASE_URL
 const AddDrivernew = () => {
 
 // expiry Date
@@ -50,12 +51,34 @@ const [dobopen, setdobOpen] = useState(false)
      const [fireextdate, setDate] = useState(new Date())
      const [fireextopen, setOpen] = useState(false)
 
+     //-----------------------------------------
+     const [cnic,setCnic] =useState("")
+
   function clearall() {
 
     setReg('')
     setYear('')
 
   }
+
+  //------------------------------------------------Code By Atique 
+
+  const checkDvr = async () => {
+
+
+    
+    const response = await fetch(
+      `${url}/dvr/getDriver/${cnic}`,
+      {
+        method: "GET",
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+    
+    }
+
+  //\\-------------------------------------------------------------
 
 
 
@@ -96,7 +119,9 @@ const [dobopen, setdobOpen] = useState(false)
                 placeholderTextColor={'grey'}
                 placeholder='CNIC #'
                 maxLength={13}
-
+                value ={cnic}
+                onChangeText={txt=>setCnic(txt)}
+                onBlur={()=>checkDvr}
                 className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
 
