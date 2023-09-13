@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { BusFront, Scroll, User, Square, CheckSquare, Search, Calendar, CameraIcon } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Bus } from 'lucide-react-native';
+
 import SelectDropdown from 'react-native-select-dropdown'
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 
 
@@ -50,17 +51,15 @@ const [dobopen, setdobOpen] = useState(false)
      const [fireextdate, setDate] = useState(new Date())
      const [fireextopen, setOpen] = useState(false)
 
-  function clearall() {
-
-    setReg('')
-    setYear('')
-
-  }
-
-
-
+     const [fileData, setFileData] = useState(null);
+     const [fileUri, setFileUri] = useState(null);
+     
+ 
+     
   return (
-     <ScrollView className=" ">
+
+  
+      <ScrollView>
       <View className=" flex flex-col   ">
         <KeyboardAvoidingView style={{ backgroundColor: 'white' }}>
 
@@ -77,10 +76,9 @@ const [dobopen, setdobOpen] = useState(false)
           <View className={`${styles.outerview} `} style={{}} >
             
             <View className=" w-4/6  h-[100] border border-gray-500 items-center ">
-                
-                
+            
             </View>
-            <TouchableOpacity className="justify-center w-full">
+            <TouchableOpacity onPress={()=>launchsCamera()} className="justify-center w-full">
             <View className=" p-2 gap-2 flex flex-row  bg-orange-2200  justify-center items-center w-2/6">
               <CameraIcon stroke="black" />
               <Text className="text-black text-lg  font-bold">Take Picture</Text>
