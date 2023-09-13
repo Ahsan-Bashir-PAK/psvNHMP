@@ -51,6 +51,9 @@ const [dobopen, setdobOpen] = useState(false)
      const [fireextdate, setDate] = useState(new Date())
      const [fireextopen, setOpen] = useState(false)
 
+     //-----------------------------------------
+     const [cnic,setCnic] =useState("")
+
   function clearall() {
 
     setReg('')
@@ -61,14 +64,17 @@ const [dobopen, setdobOpen] = useState(false)
   //------------------------------------------------Code By Atique 
 
   const checkDvr = async () => {
+
+
+    
     const response = await fetch(
-      `${url}/dvr/getDriver/${user}`,
+      `${url}/dvr/getDriver/${cnic}`,
       {
         method: "GET",
       }
     );
     const result = await response.json();
-    setData(result);
+    console.log(result);
     
     }
 
@@ -113,7 +119,9 @@ const [dobopen, setdobOpen] = useState(false)
                 placeholderTextColor={'grey'}
                 placeholder='CNIC #'
                 maxLength={13}
-
+                value ={cnic}
+                onChangeText={txt=>setCnic(txt)}
+                onBlur={()=>checkDvr}
                 className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
 
