@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Switch } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { BusFront, Scroll, User, Square, CheckSquare, Search, Calendar } from 'lucide-react-native';
+import { BusFront, Scroll, User, Square, CheckSquare, Search, Calendar, CameraIcon } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-//import DropDownPicker from 'react-native-dropdown-picker';
+
 import { Bus } from 'lucide-react-native';
 import SelectDropdown from 'react-native-select-dropdown'
 
@@ -90,25 +90,37 @@ const [dobopen, setdobOpen] = useState(false)
             </View>
           </View>
 
-          {/*  Search CNIC */}
+          {/*  Take Picture */}
           <View className={`${styles.outerview} `} style={{}} >
             
-            <View className=" w-4/6  border border-gray-200 items-center ">
-                <TextInput 
-                placeholderTextColor={'grey'}
-                placeholder='Enter Driver CNIC'
-                maxLength={13}
-                keyboardType='numeric'
-
-                className=' text-black rounded-md  text-lg' />
+            <View className=" w-4/6  h-[100] border border-gray-500 items-center ">
+                
                 
             </View>
-            <View className="flex flex-row-reverse  bg-orange-2200  justify-center items-center w-2/6"><Text className="text-black text-lg  font-bold">Search</Text>
-            
-            {/* <Search stroke='black' /> */}
+            <TouchableOpacity className="justify-center w-full">
+            <View className=" p-2 gap-2 flex flex-row  bg-orange-2200  justify-center items-center w-2/6">
+              <CameraIcon stroke="black" />
+              <Text className="text-black text-lg  font-bold">Take Picture</Text>
             </View>
+            </TouchableOpacity>
           </View>
           
+          {/* Enter CNIC */}
+          <View className={styles.outerview}>
+            <View className={styles.labelstyle}><Text className="text-black font-bold">CNIC</Text></View>
+            <View className="w-4/6 items-center">
+            <TextInput
+                placeholderTextColor={'grey'}
+                placeholder='CNIC #'
+                maxLength={13}
+
+                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
+
+
+            </View>
+          </View>
+
+
           {/*  Driver Name */}
           <View className={styles.outerview} >
             <View className={styles.labelstyle}><Text className="text-black  font-bold">Driver Name</Text></View>
@@ -181,21 +193,7 @@ const [dobopen, setdobOpen] = useState(false)
             </View>
           </View>
 
-          {/* Enter CNIC */}
-          <View className={styles.outerview}>
-            <View className={styles.labelstyle}><Text className="text-black font-bold">CNIC</Text></View>
-            <View className="w-4/6 items-center">
-            <TextInput
-                placeholderTextColor={'grey'}
-                placeholder='CNIC #'
-                maxLength={13}
-
-                className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
-
-
-            </View>
-          </View>
-
+          
           {/* Cell No. */}
           <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">Cell No.</Text></View>
@@ -237,16 +235,14 @@ const [dobopen, setdobOpen] = useState(false)
             </View>
           </View>
 
-           {/* Manufacturing Year */}
+           {/* License Number */}
            <View className={styles.outerview}>
             <View className={styles.labelstyle}><Text className="text-black font-bold">License Number</Text></View>
             <View className="w-4/6 items-center">
               <TextInput
                 placeholderTextColor={'grey'}
                 placeholder='LES-15-1234'
-                maxLength={4}
-                minLength={2}
-                keyboardType='numeric'
+                maxLength={15}
                 className=' border-black text-black rounded-md  text-lg' />
             </View>
           </View>

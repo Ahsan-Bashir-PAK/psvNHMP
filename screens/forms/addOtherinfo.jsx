@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVi
 import DatePicker from 'react-native-date-picker';
 import { Calendar, CheckSquare, Disc2, Square, Info } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 
 
 const AddOtherInfo = () => {

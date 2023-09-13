@@ -41,6 +41,43 @@ const search_psv = [
 
 ];
 
+// Driver Search 
+
+const driver_data =[
+  {
+     "SrNo":"13",
+     "CNIC":"12344578910",
+     "DriverName":"Shaban",
+     "FatherName":"Iqbal",
+     "Age":"2023-08-08T00:00:00.000Z",
+     "Address":"Gujranwala",
+     "EyeSight":"glasses",
+     "Disability":"nill",
+     "Company":"Faisal Mover",
+     "CellNo":"12345678",
+     "LicenseType":"HTV",
+     "LicenseNo":"456",
+     "IssueAuth":"Punjab",
+     "IssueDate":"2022-10-10T00:00:00.000Z",
+     "LicenseVerify":true,
+     "DriverPic":null,
+     "AddedBY":"0",
+     "AddedON":null,
+     "LicenseExpiry":"2024-06-09T00:00:00.000Z",
+     "Status":"Active",
+     "KM":0,
+     "Side":"NORTH",
+     "EditedBy":null,
+     "EditedOn":null,
+     "EditedLat":null,
+     "EditedLon":null,
+     "BanReason":"",
+     "AddedZone":"",
+     "AddedSector":"North 3",
+     "AddedBeat":""
+  },
+]
+
 
 
 function Home() {
@@ -60,7 +97,15 @@ function Home() {
        }  
     }
       
-
+    function searchDriver (){
+  
+      const psv = reg + "-"+ year + "-"+ number;
+          if ( psv == search_psv[0].PSV) {
+              navigation.navigate('TripReport');
+        } else {
+          console.log(psv, search_psv[0].PSV);
+        }  
+     }
 
   return (
     // <SafeAreaView>
@@ -95,12 +140,12 @@ function Home() {
             className='  border border-r-0 border-l-0 bg-white border-black text-black rounded-md w-4/12 text-lg' />
         </View>
         {/* View SearchBox Button */}
-        <View  className=' flex-row p-1 justify-center  w-full '>
+        {/* <View  className=' flex-row p-1 justify-center  w-full '>
           <TouchableOpacity onPress={()=>searchPSV()} className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
             <Search stroke="white" size={25} />
             <Text className=' text-center font-bold font-white  text-lg text-white'>Search PSV</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View className=' flex-row p-1 justify-center  w-full '>
           <TextInput
@@ -108,15 +153,15 @@ function Home() {
 
             placeholderTextColor={'grey'}
             autoCapitalize={'characters'}
-            placeholder='0000000000000'
+            placeholder='0000000000000 [CNIC without Dashes]'
             maxLength={13}
             keyboardType='Numeric'
             className='border justify-center pl-4 bg-white border-black m-1 rounded-md w-full  text-lg text-black' />
         </View>
         <View className=' flex-row p-1 justify-center  w-full '>
-          <TouchableOpacity className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
-            <Search stroke="white" size={25} />
-            <Text className=' text-center font-bold font-white  text-lg text-white'>Search Driver's CNIC</Text>
+          <TouchableOpacity onPress={()=>searchPSV()} className='bg-[#29378a]  justify-center  flex-row w-full rounded-md items-center p-3 '>
+            <BookCopy stroke="white" size={25} />
+            <Text className=' text-center font-bold font-white  text-lg text-white'>Generate Inspection Report</Text>
           </TouchableOpacity>
         </View>
       </View>
