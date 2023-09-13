@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {View, Text} from 'react-native';
-import AddDriver from '../screens/forms/addDriver';
+//import AddDriver from '../screens/forms/addDriver';
 import AddVehicle from '../screens/forms/addVehicle';
 import { getTabBarHeight } from '@react-navigation/bottom-tabs/lib/typescript/src/views/BottomTabBar';
 import { UserCircle, User, PlusCircle, FilePlus, BadgeInfo, Wrench, ShieldQuestion  } from 'lucide-react-native';
