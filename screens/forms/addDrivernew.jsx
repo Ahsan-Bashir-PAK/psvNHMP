@@ -13,6 +13,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 const countries = ["Punjab", "KPK", "Sindh", "Balochistan", "NHMP", "Islamabad", "AJK", "GB"]
 const License_type = ["LTV", "HTV", "LTV / PSV" , "HTV / PSV", "Other" ]
 
+const url = process.env.BASE_URL
 const AddDrivernew = () => {
 
 // expiry Date
@@ -56,6 +57,22 @@ const [dobopen, setdobOpen] = useState(false)
     setYear('')
 
   }
+
+  //------------------------------------------------Code By Atique 
+
+  const checkDvr = async () => {
+    const response = await fetch(
+      `${url}/dvr/getDriver/${user}`,
+      {
+        method: "GET",
+      }
+    );
+    const result = await response.json();
+    setData(result);
+    
+    }
+
+  //\\-------------------------------------------------------------
 
 
 
