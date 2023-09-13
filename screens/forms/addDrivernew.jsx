@@ -63,7 +63,7 @@ const [dobopen, setdobOpen] = useState(false)
 
   //------------------------------------------------Code By Atique 
 
-  const checkDvr = async () => {
+  const chkDriver = async () => {
 
 
     
@@ -121,7 +121,7 @@ const [dobopen, setdobOpen] = useState(false)
                 maxLength={13}
                 value ={cnic}
                 onChangeText={txt=>setCnic(txt)}
-                onBlur={()=>checkDvr}
+                onBlur={()=>chkDriver}
                 className='  w-8/12 bg-white border-black text-black rounded-md  text-lg text-center' />
 
 
