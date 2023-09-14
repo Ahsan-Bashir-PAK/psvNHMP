@@ -29,33 +29,32 @@ const [issueopen, setissueOpen] = useState(false)
 const [dobdate, setdobDate] = useState(new Date())
 const [dobopen, setdobOpen] = useState(false)
 
-  const [provinceOpen, setProvinceOpen] = useState(false);
-  const [currentLiceince, setCurrentLiceince,] = useState(null);
+//cnic
+const[cnic,setCnic] =useState("")
+//driverName
+const[driverName,setDriverName] =useState("")
+//fatherName
+const[fatherName,setFatherName] =useState("")
+//Address
+const[address,setAddress] =useState("")
+//disability
+const[disability,setDisability] =useState("")
+//cell
+const[cellNo,setCellNo] =useState("")
+//company
+const[company,setCompany] =useState("")
+//license No
+const[licenseNo,setLicenseNo] =useState("")
 
-  const [tracker, setTracker] = useState(false);
-  const [emergencyExit, setEmergencyExit] = useState(false);
-  const [ac, setAc] = useState(false);
+//Autherity
+const[authority,setAuthority] =useState("")
+//license type
+const[licenseType,setLicenseType] =useState("")
 
-  //------------------------------------select vehicle type 
-  //-------------------------------------------------------
-
-  //----------------------------------------
-  const [searchreg, setReg] = useState(null);
-  const [setyear, setYear] = useState(null);
-
-  const [acstate, setState] = useState(true);
-
-  const [LcOpen, setLcOpen] = useState(false);
-  const [currentProvince, setCurrentProvince] = useState(null)
-
-     // Fire Ext Date
-     const [fireextdate, setDate] = useState(new Date())
-     const [fireextopen, setOpen] = useState(false)
 
   function clearall() {
 
-    setReg('')
-    setYear('')
+   
 
   }
 
@@ -64,8 +63,6 @@ const [dobopen, setdobOpen] = useState(false)
 
   const chkDriver = async () => {
 
-
-    
     const response = await fetch(
       `${url}/dvr/getDriver/${cnic}`,
       {
@@ -73,11 +70,73 @@ const [dobopen, setdobOpen] = useState(false)
       }
     );
     const result = await response.json();
-    console.log(result);
+    if(result){
+      Alert.alert("Driver already in Record")
+    }
     
     }
 
-  //\\-------------------------------------------------------------
+  //\\-------------------------------------------------------------driver object to save 
+  const driver = {
+    CNIC:cnic,
+    DriverName:driverName,
+    FatherName:fatherName,
+    Age:dobdate,
+    Address:address,
+    Disability:disability,
+    CellNo:cellNo,
+    Company:company,
+    LicenseNo:licenseNo,
+    LicenseType:licenseType,
+    IssueAuth:authority,
+    IssueDate:issuedate,
+    LicenseExpiry:expirydate
+  };
+  //\\-------------------------------------------------------------Add Driver
+
+  const saveDriver = async () => {
+
+    if(
+cnic    !="" &&
+driverName !="" &&
+fatherName !="" &&
+dobdate !="" &&
+address !="" &&
+disability !="" &&
+cellNo !="" &&
+company !="" &&
+licenseNo !="" &&
+licenseType !="" &&
+authority !="" &&
+issuedate !="" &&
+expirydate !=""
+    ){
+    await fetch(`${url}/dvr/addDriver`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(driver),
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Driver Added');
+          
+        } else {
+          console.log('Data not Saved');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      
+      clearall();
+    }
+    else{
+      Alert.alert("Please Fill fields")
+    }
+  };
+//--------------------------------------------------------
 
 
 
@@ -262,7 +321,7 @@ const [dobopen, setdobOpen] = useState(false)
             <SelectDropdown
                 data= {License_type}
                 onSelect={(selectedItem, index) => {
-                  console.log(selectedItem, index)
+                  setLicenseType(selectedItem)
                 }}
                 defaultButtonText='Select License type'
                 buttonStyle={{
@@ -279,7 +338,7 @@ const [dobopen, setdobOpen] = useState(false)
               <SelectDropdown
                 data= {countries}
                 onSelect={(selectedItem, index) => {
-                  console.log(selectedItem, index)
+                  setAuthority(selectedItem)
                 }
                 
                 } 
